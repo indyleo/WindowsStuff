@@ -54,6 +54,13 @@ Return
 Run, wt.exe
 Return
 
+; Hotkey to open Windows Terminal as admin
+!^Enter:: 
+{
+    Run *RunAs "wt.exe"
+}
+Return
+
 ; Hotkey to open File Explorer
 !f:: 
 Run, explorer.exe
