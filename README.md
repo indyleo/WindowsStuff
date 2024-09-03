@@ -1,6 +1,23 @@
 # WindowsStuff
 This Is my ahk and powershell setups
 
-- Do this for ls to look better: Install-Module -Name Terminal-Icons -Repository PSGallery
-- You also have to do this: Set-ExecutionPolicy RemoteSigned
+Reqired Steps to get working: (I think)
+- Run this: then restart
+```pwsh
+Set-ExecutionPolicy RemoteSigned 
+```
+- Then do these: Do Profile First! then reload pwsh then do the alias and function files
+```pwsh
+Unblock-File $PROFILE
+```
+```pwsh
+Unblock-File $AlIAS
+Unblock-File $FUNCTION
+```
+
+Nice Stuff For The Powershell config:
+- Do this for ls to look better: 
+```pwsh
+Install-Module -Name Terminal-Icons -Repository PSGallery
+```
 - You should Use a Nerd Font: https://github.com/ryanoasis/nerd-fonts/releases/
