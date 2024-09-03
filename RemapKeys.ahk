@@ -1,4 +1,7 @@
-﻿;;; Media/Audio Keys
+;;; Varables
+USER = UR-USER-PUT-HERE
+
+;;; Media/Audio Keys
 
 ; Play/Pause
 ^!p::Send {Media_Play_Pause}
@@ -41,7 +44,7 @@ Return
 
 ; Hotkey to open Discord
 !d:: 
-Run, C:\Users\Indy\AppData\Local\Discord\app-1.0.9161\Discord.exe
+Run, C:\Users\%USER%\AppData\Local\Discord\app-1.0.9161\Discord.exe
 Return
 
 ; Hotkey to open foobar2000
