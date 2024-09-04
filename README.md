@@ -21,3 +21,8 @@ Nice Stuff For The Powershell config:
 Install-Module -Name Terminal-Icons -Repository PSGallery
 ```
 - You should Use a Nerd Font: https://github.com/ryanoasis/nerd-fonts/releases/
+
+For A Better Gsudo do this:
+```pwsh
+gsudo config CacheMode Explicit
+```
