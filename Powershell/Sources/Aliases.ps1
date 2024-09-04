@@ -5,7 +5,6 @@ function docs { Set-Location -Path $HOME\Documents }
 function dats { Set-Location -Path $HOME\AppData\ }
 function .. { Set-Location -Path .. }
 
-
 ### Permision Aliases
 Set-Alias -Name su -Value admin
 Set-Alias -Name sudo -Value gsudo
@@ -23,7 +22,6 @@ function la { Get-ChildItem -Path . -Force | Format-Table -AutoSize }
 function ll { Get-ChildItem -Path . -Force -Hidden | Format-Table -AutoSize }
 function wq { exit }
 
-
 ### Git Aliases
 function stat { git status }
 function addup { git add -u }
@@ -35,4 +33,4 @@ function clone { git clone "$args" }
 
 ### System Aliases
 function sysinfo { Get-ComputerInfo }
-Set-Alias -Name neofetch -Value winfetch
+Set-Alias -Name neofetch -Value fastfetch
