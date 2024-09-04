@@ -24,5 +24,5 @@ Install-Module -Name Terminal-Icons -Repository PSGallery
 
 For A Better Gsudo do this:
 ```pwsh
-gsudo config CacheMode Explicit
+gsudo config CacheMode Auto
 ```
