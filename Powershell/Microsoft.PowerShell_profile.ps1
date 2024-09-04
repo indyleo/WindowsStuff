@@ -5,6 +5,9 @@ function Test-CommandExists {
     return $exists
 }
 
+# FastFetch
+if (Test-CommandExists fastfetch) { fastfetch } else { Write-Host "Fastfetch is not installed." } 
+
 # Varables Configs
 $EDITOR = if (Test-CommandExists codium) { 'codium' } else { Write-Host "VSCodium is not installed." }
 $AlIAS = "$HOME\Documents\Powershell\Sources\Aliases.ps1"
@@ -59,7 +62,7 @@ if (Test-Path $FUNCTION) {
 if (Test-CommandExists zoxide ) {
     Invoke-Expression (& { (zoxide init powershell --cmd cd | Out-String) })
 } else {
-    Write-Host "zoxide command not found. Skipping initialization."
+    Write-Host "Zoxide is not installed."
 }
 
 ### Oh My Posh Setup
