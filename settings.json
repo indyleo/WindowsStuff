@@ -1,0 +1,9 @@
+{
+    "workbench.iconTheme": "simple-icons",
+    "window.titleBarStyle": "custom",
+    "workbench.startupEditor": "none",
+    "security.workspace.trust.untrustedFiles": "open",
+    "powershell.helpCompletion": "Disabled",
+    "editor.fontFamily": "CaskaydiaCove NF",
+    "editor.fontSize": 13
+}
