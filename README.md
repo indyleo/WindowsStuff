@@ -26,3 +26,8 @@ For A Better Gsudo do this:
 ```pwsh
 gsudo config CacheMode Auto
 ```
+
+Move setting.json to proper directory:
+```pwsh
+mv .\settings.json $HOME\AppData\Roaming\VSCodium\User\
+```
