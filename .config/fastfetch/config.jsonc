@@ -38,19 +38,19 @@
         },
         {
             "type": "kernel",
-            "keyIcon": "🛠️"
+            "key": "🛠️"
         },
         {
             "type": "packages",
-            "keyIcon": "📦"
+            "key": "📦"
         },
         {
             "type": "shell",
-            "keyIcon": "🐚"
+            "key": "🐚"
         },
         {
             "type": "terminal",
-            "keyIcon": "📺"
+            "key": "📺"
         },
         {
             "type": "custom",
@@ -58,23 +58,23 @@
         },
         {
             "type": "host",
-            "keyIcon": "🏠"
+            "key": "🏠"
         },
         {
             "type": "cpu",
-            "keyIcon": "⚙️"
+            "key": "⚙️"
         },
         {
             "type": "gpu",
-            "keyIcon": "🎮"
+            "key": "🎮"
         },
         {
             "type": "memory",
-            "keyIcon": "💾"
+            "key": "💾"
         },
         {
             "type": "disk",
-            "keyIcon": "💽"
+            "key": "💽"
         },
         {
             "type": "custom",
@@ -82,7 +82,7 @@
         },
         {
             "type": "uptime",
-            "keyIcon": "⏳"
+            "key": "⏳"
         },
         {
             "type": "custom",
