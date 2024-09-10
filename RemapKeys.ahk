@@ -44,7 +44,7 @@ Return
 
 ; Hotkey to open Discord
 !d:: 
-Run, C:\Users\Indy\scoop\apps\vesktop\current\Vesktop.exe
+Run, C:\Users\%USER%\scoop\apps\vesktop\current\Vesktop.exe
 Return
 
 ; Hotkey to open foobar2000
