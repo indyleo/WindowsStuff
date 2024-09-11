@@ -4,7 +4,7 @@
         "multithreading": true
     },
     "display": {
-        "separator": "› ",
+        "separator": " › ",
         "color": {
             "keys": "cyan",
             "title": "magenta",
@@ -34,23 +34,23 @@
         },
         {
             "type": "os",
-            "keyIcon": "🖥️"
+            "key": " "
         },
         {
             "type": "kernel",
-            "key": "🛠️"
+            "key": " "
         },
         {
             "type": "packages",
-            "key": "📦"
+            "key": " "
         },
         {
             "type": "shell",
-            "key": "🐚"
+            "key": "  "
         },
         {
             "type": "terminal",
-            "key": "📺"
+            "key": " "
         },
         {
             "type": "custom",
@@ -58,23 +58,23 @@
         },
         {
             "type": "host",
-            "key": "🏠"
+            "key": " "
         },
         {
             "type": "cpu",
-            "key": "⚙️"
+            "key": "󰻠 "
         },
         {
             "type": "gpu",
-            "key": "🎮"
+            "key": ""
         },
         {
             "type": "memory",
-            "key": "💾"
+            "key": "󰍛 "
         },
         {
             "type": "disk",
-            "key": "💽"
+            "key": "󰋊 "
         },
         {
             "type": "custom",
@@ -82,7 +82,7 @@
         },
         {
             "type": "uptime",
-            "key": "⏳"
+            "key": "󰥔 "
         },
         {
             "type": "custom",
