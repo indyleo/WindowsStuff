@@ -15,6 +15,7 @@ $FUNCTION = "$HOME\Documents\Powershell\Sources\Functions.ps1"
 
 # Imports
 Import-Module -Name Terminal-Icons
+Import-Module -Name gsudoModule
 
 # Opt-out of telemetry before doing anything, only if PowerShell is run as admin
 if ([bool]([System.Security.Principal.WindowsIdentity]::GetCurrent()).IsSystem) {
