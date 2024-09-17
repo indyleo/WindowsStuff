@@ -42,9 +42,9 @@ return
 Run, C:\Program Files\Ablaze Floorp\floorp.exe
 Return
 
-; Hotkey to open Discord
+; Hotkey to open Vesktop (Discord)
 !d:: 
-Run, C:\Users\%USER%\scoop\apps\vesktop\current\Vesktop.exe
+Run, C:\Users\%USER%\AppData\Local\vesktop\Vesktop.exe
 Return
 
 ; Hotkey to open foobar2000
