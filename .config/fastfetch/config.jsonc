@@ -34,7 +34,7 @@
         },
         {
             "type": "os",
-            "key": " "
+            "key": " "
         },
         {
             "type": "kernel",
@@ -42,11 +42,11 @@
         },
         {
             "type": "packages",
-            "key": " "
+            "key": " "
         },
         {
             "type": "shell",
-            "key": "  "
+            "key": " "
         },
         {
             "type": "terminal",
@@ -66,11 +66,11 @@
         },
         {
             "type": "gpu",
-            "key": ""
+            "key": "󰊴 "
         },
         {
             "type": "memory",
-            "key": "󰍛 "
+            "key": "💾"
         },
         {
             "type": "disk",
