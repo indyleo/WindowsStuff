@@ -95,3 +95,80 @@ function flushdns {
 	Write-Host "DNS has been flushed"
 }
 function Get-PubIP { (Invoke-WebRequest http://ifconfig.me/ip).Content }
+
+### Downloading Functions
+
+# YT Downloading
+function Get-YoutubeContent {
+    param (
+        [Parameter(Mandatory = $true)]
+        [string]$url,
+
+        [Alias("a", "audio")]
+        [switch]$Audio,
+
+        [Alias("v", "video")]
+        [switch]$Video,
+
+        [Alias("b", "both")]
+        [switch]$Both
+    )
+
+    # Set the output folder to Downloads
+    $outputFolder = [System.IO.Path]::Combine([Environment]::GetFolderPath("UserProfile"), "Downloads")
+
+    # Determine download type based on the switch provided
+    if ($Audio) {
+        yt-dlp -x --audio-format mp3 --embed-thumbnail --add-metadata --audio-quality 0 "$url" -o "$outputFolder/%(title)s.%(ext)s"
+        Write-Output "Audio download completed. File saved in $outputFolder."
+    }
+    elseif ($Video) {
+        yt-dlp -f "bestvideo+bestaudio" --merge-output-format mp4 --embed-thumbnail --add-metadata "$url" -o "$outputFolder/%(title)s.%(ext)s"
+        Write-Output "Video download completed. File saved in $outputFolder."
+    }
+    elseif ($Both) {
+        yt-dlp -f "bestvideo+bestaudio" --merge-output-format mp4 --embed-thumbnail --add-metadata "$url" -o "$outputFolder/%(title)s.%(ext)s"
+        yt-dlp -x --audio-format mp3 --embed-thumbnail --add-metadata --audio-quality 0 "$url" -o "$outputFolder/%(title)s_audio.%(ext)s"
+        Write-Output "Both audio and video downloads completed. Files saved in $outputFolder."
+    }
+    else {
+        Write-Output "Please specify a download type: -a for audio, -v for video, or -b for both."
+    }
+}
+
+# Spotify Downloading
+function Get-SpotifyContent {
+    param (
+        [Parameter(Mandatory = $true)]
+        [string]$url,
+
+        [Alias("t", "track")]
+        [switch]$Track,
+
+        [Alias("a", "album")]
+        [switch]$Album,
+
+        [Alias("p", "playlist")]
+        [switch]$Playlist
+    )
+
+    # Set the output folder to Downloads
+    $outputFolder = [System.IO.Path]::Combine([Environment]::GetFolderPath("UserProfile"), "Downloads")
+
+    # Determine download type based on the switch provided
+    if ($Track) {
+        spotdl "$url" --output "$outputFolder/%(title)s.%(ext)s"
+        Write-Output "Track download completed. File saved in $outputFolder."
+    }
+    elseif ($Album) {
+        spotdl "$url" --output "$outputFolder/%(title)s.%(ext)s"
+        Write-Output "Album download completed. Files saved in $outputFolder."
+    }
+    elseif ($Playlist) {
+        spotdl "$url" --output "$outputFolder/%(title)s.%(ext)s"
+        Write-Output "Playlist download completed. Files saved in $outputFolder."
+    }
+    else {
+        Write-Output "Please specify a download type: -t for track, -a for album, or -p for playlist."
+    }
+}
