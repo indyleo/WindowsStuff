@@ -62,7 +62,7 @@
         },
         {
             "type": "cpu",
-            "keyIcon": "󰻠 "
+            "keyIcon": " "
         },
         {
             "type": "gpu",
@@ -70,11 +70,11 @@
         },
         {
             "type": "memory",
-            "keyIcon": "󰍛 "
+            "keyIcon": " "
         },
         {
             "type": "disk",
-            "keyIcon": "󰋊 "
+            "keyIcon": " "
         },
         {
             "type": "custom",
