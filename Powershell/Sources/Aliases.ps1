@@ -10,10 +10,11 @@ Set-Alias -Name su -Value admin
 Set-Alias -Name sudo -Value gsudo
 
 ### Code Aliases
-Set-Alias -Name code -Value $EDITOR
-function Edit-Profile { code $PROFILE }
-function Edit-Alias { code $ALIAS }
-function Edit-Function { code $FUNCTION }
+Set-Alias -Name code -Value $VISUAL
+Set-Alias -Name v -Value $EDITOR
+function Edit-Profile { nvim $PROFILE }
+function Edit-Alias { nvim $ALIAS }
+function Edit-Function { nvim $FUNCTION }
 
 ### Shell Aliases
 function Reload-Profile { & $profile }
