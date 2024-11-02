@@ -9,7 +9,8 @@ function Test-CommandExists {
 if (Test-CommandExists fastfetch) { fastfetch } else { Write-Host "Fastfetch is not installed." } 
 
 # Varables Configs
-$EDITOR = if (Test-CommandExists codium) { 'codium' } else { Write-Host "VSCodium is not installed." }
+$VISUAL = if (Test-CommandExists codium) { 'codium' } else { Write-Host "VSCodium is not installed." }
+$EDITOR = if (Test-CommandExists nvim) { 'nvim' } else { Write-Host "Neovim ias not installed." }
 $AlIAS = "$HOME\Documents\Powershell\Sources\Aliases.ps1"
 $FUNCTION = "$HOME\Documents\Powershell\Sources\Functions.ps1"
 
