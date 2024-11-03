@@ -104,37 +104,53 @@ function Get-YoutubeContent {
         [Parameter(Mandatory = $true)]
         [string]$url,
 
-        [Alias("a", "audio")]
+        # Updated aliases to avoid conflicts
+        [Alias("aud")]
         [switch]$Audio,
 
-        [Alias("v", "video")]
+        [Alias("vid")]
         [switch]$Video,
 
-        [Alias("b", "both")]
+        [Alias("bth")]
         [switch]$Both
     )
+
+    # Validate that only one download type is specified
+    if (($Audio, $Video, $Both | Where-Object { $_ }).Count -ne 1) {
+        Write-Output "Please specify only one download type: -aud for audio, -vid for video, or -bth for both."
+        return
+    }
 
     # Set the output folder to Downloads
     $outputFolder = [System.IO.Path]::Combine([Environment]::GetFolderPath("UserProfile"), "Downloads")
 
-    # Determine download type based on the switch provided
-    if ($Audio) {
-        yt-dlp -x --audio-format mp3 --embed-thumbnail --add-metadata --audio-quality 0 "$url" -o "$outputFolder/%(title)s.%(ext)s"
-        Write-Output "Audio download completed. File saved in $outputFolder."
+    # Check if yt-dlp is installed
+    if (-not (Get-Command "yt-dlp" -ErrorAction SilentlyContinue)) {
+        Write-Output "yt-dlp is not installed. Please install yt-dlp and try again."
+        return
     }
-    elseif ($Video) {
-        yt-dlp -f "bestvideo+bestaudio" --merge-output-format mp4 --embed-thumbnail --add-metadata "$url" -o "$outputFolder/%(title)s.%(ext)s"
-        Write-Output "Video download completed. File saved in $outputFolder."
+
+    # Try downloading content
+    try {
+        if ($Audio) {
+            yt-dlp -x --audio-format mp3 --embed-thumbnail --add-metadata --audio-quality 0 "$url" -o "$outputFolder/%(title)s.%(ext)s"
+            Write-Output "Audio download completed. File saved in $outputFolder."
+        }
+        elseif ($Video) {
+            yt-dlp -f "bestvideo+bestaudio" --merge-output-format mp4 --embed-thumbnail --add-metadata "$url" -o "$outputFolder/%(title)s.%(ext)s"
+            Write-Output "Video download completed. File saved in $outputFolder."
+        }
+        elseif ($Both) {
+            yt-dlp -f "bestvideo+bestaudio" --merge-output-format mp4 --embed-thumbnail --add-metadata "$url" -o "$outputFolder/%(title)s.%(ext)s"
+            yt-dlp -x --audio-format mp3 --embed-thumbnail --add-metadata --audio-quality 0 "$url" -o "$outputFolder/%(title)s_audio.%(ext)s"
+            Write-Output "Both audio and video downloads completed. Files saved in $outputFolder."
+        }
     }
-    elseif ($Both) {
-        yt-dlp -f "bestvideo+bestaudio" --merge-output-format mp4 --embed-thumbnail --add-metadata "$url" -o "$outputFolder/%(title)s.%(ext)s"
-        yt-dlp -x --audio-format mp3 --embed-thumbnail --add-metadata --audio-quality 0 "$url" -o "$outputFolder/%(title)s_audio.%(ext)s"
-        Write-Output "Both audio and video downloads completed. Files saved in $outputFolder."
-    }
-    else {
-        Write-Output "Please specify a download type: -a for audio, -v for video, or -b for both."
+    catch {
+        Write-Output "An error occurred while downloading: $_"
     }
 }
+
 
 # Spotify Downloading
 function Get-SpotifyContent {
@@ -142,33 +158,48 @@ function Get-SpotifyContent {
         [Parameter(Mandatory = $true)]
         [string]$url,
 
-        [Alias("t", "track")]
+        # Updated aliases to avoid conflicts
+        [Alias("trk")]
         [switch]$Track,
 
-        [Alias("a", "album")]
+        [Alias("alb")]
         [switch]$Album,
 
-        [Alias("p", "playlist")]
+        [Alias("pl")]
         [switch]$Playlist
     )
+
+    # Validate that only one download type is specified
+    if (($Track, $Album, $Playlist | Where-Object { $_ }).Count -ne 1) {
+        Write-Output "Please specify only one download type: -trk for track, -alb for album, or -pl for playlist."
+        return
+    }
 
     # Set the output folder to Downloads
     $outputFolder = [System.IO.Path]::Combine([Environment]::GetFolderPath("UserProfile"), "Downloads")
 
-    # Determine download type based on the switch provided
-    if ($Track) {
-        spotdl "$url" --output "$outputFolder/%(title)s.%(ext)s"
-        Write-Output "Track download completed. File saved in $outputFolder."
+    # Check if spotdl is installed
+    if (-not (Get-Command "spotdl" -ErrorAction SilentlyContinue)) {
+        Write-Output "spotdl is not installed. Please install spotdl and try again."
+        return
     }
-    elseif ($Album) {
-        spotdl "$url" --output "$outputFolder/%(title)s.%(ext)s"
-        Write-Output "Album download completed. Files saved in $outputFolder."
+
+    # Try downloading content
+    try {
+        if ($Track) {
+            spotdl "$url" --output "$outputFolder"
+            Write-Output "Track download completed. File saved in $outputFolder."
+        }
+        elseif ($Album) {
+            spotdl "$url" --output "$outputFolder"
+            Write-Output "Album download completed. Files saved in $outputFolder."
+        }
+        elseif ($Playlist) {
+            spotdl "$url" --output "$outputFolder"
+            Write-Output "Playlist download completed. Files saved in $outputFolder."
+        }
     }
-    elseif ($Playlist) {
-        spotdl "$url" --output "$outputFolder/%(title)s.%(ext)s"
-        Write-Output "Playlist download completed. Files saved in $outputFolder."
-    }
-    else {
-        Write-Output "Please specify a download type: -t for track, -a for album, or -p for playlist."
+    catch {
+        Write-Output "An error occurred while downloading: $_"
     }
 }
