@@ -142,15 +142,13 @@ function Get-YoutubeContent {
         }
         elseif ($Both) {
             yt-dlp -f "bestvideo+bestaudio" --merge-output-format mp4 --embed-thumbnail --add-metadata "$url" -o "$outputFolder/%(title)s.%(ext)s"
-            yt-dlp -x --audio-format mp3 --embed-thumbnail --add-metadata --audio-quality 0 "$url" -o "$outputFolder/%(title)s_audio.%(ext)s"
-            Write-Output "Both audio and video downloads completed. Files saved in $outputFolder."
+            Write-Output "Combined audio and video download completed as an MP4. File saved in $outputFolder."
         }
     }
     catch {
         Write-Output "An error occurred while downloading: $_"
     }
 }
-
 
 # Spotify Downloading
 function Get-SpotifyContent {
