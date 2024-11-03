@@ -31,3 +31,8 @@ Move setting.json to proper directory:
 ```pwsh
 mv .\settings.json $HOME\AppData\Roaming\VSCodium\User\
 ```
+
+Move nvim to proper directory:
+```pwsh
+mv .\nvim $HOME\AppData\Local
+```
