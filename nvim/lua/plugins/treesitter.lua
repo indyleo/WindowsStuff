@@ -25,6 +25,7 @@ return {
         -- Text
         "json",
         "yaml",
+        "toml",
         "gitignore",
         "markdown",
         "markdown_inline",
