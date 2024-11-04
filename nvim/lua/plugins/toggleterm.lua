@@ -13,9 +13,6 @@ return {
         direction = "horizontal",
         close_on_exit = true,
         shell = "pwsh",  -- Set the shell to PowerShell
-        float_opts = {
-        border = "curved",
-      },
     }
   end,
 }
