@@ -19,6 +19,7 @@ opt.hlsearch = true
 opt.incsearch = true
 opt.ignorecase = true
 opt.mouse = "a"
+opt.mousemodel = 'popup'
 opt.pumheight = 10
 opt.showmode = false
 opt.showtabline = 0
