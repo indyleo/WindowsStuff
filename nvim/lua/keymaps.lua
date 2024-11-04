@@ -105,6 +105,10 @@ vim.keymap.set('n', '<leader>dt', ":UndotreeToggle<CR>", {desc = "Toggles Undotr
 -- ToggleTerm
 keymap("n", "<C-q>", ":ToggleTerm<CR>", { desc = "Toggles Terminal" }, opts)
 
+-- Comment
+keymap("n", "<leader>/", ":lua require('Comment.api').toggle.linewise.current()<CR>", { desc = "Comments Line" }, opts)
+keymap("v", "<leader>/", "<esc><:lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>", { desc = "Comments Multi" }, opts)
+
 -- Telescope
 keymap("n", "<leader>ff", ":Telescope find_files<cr>", { desc = "Fuzzy find files in cwd" }, opts)
 keymap("n", "<leader>fr", ":Telescope oldfiles<cr>", { desc = "Fuzzy find recent files" }, opts)
