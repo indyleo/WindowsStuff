@@ -69,6 +69,11 @@ Return
 Run, explorer.exe
 Return
 
+; Open Neovide (Editor)
+!e::
+Run, C:\Users\Indy\scoop\shims\neovide.exe
+Return
+
 ; Hotkey to open Control Panel, or Setting
 !s::
     KeyWait, s, D ; Wait for the S key to be pressed down
