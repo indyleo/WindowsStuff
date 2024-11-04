@@ -71,7 +71,7 @@ Return
 
 ; Open Neovide (Editor)
 !e::
-Run, C:\Users\Indy\scoop\shims\neovide.exe
+Run, C:\Users\%USER%\scoop\shims\neovide.exe
 Return
 
 ; Hotkey to open Control Panel, or Setting
