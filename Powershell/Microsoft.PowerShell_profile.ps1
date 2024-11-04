@@ -61,8 +61,11 @@ if (Test-Path $FUNCTION) {
     Write-Host "Functions file does not exist."
 }
 
-# Gh & Git Completions
-if ( Test-CommandExists gh ) { . "$HOME\Documents\PowerShell\Sources\Gh-Completion" } else { Write-Host "Gh not installed" }
+if (Test-Path "$HOME\Documents\PowerShell\Sources\Gh-Completion.ps1") {
+    if ( Test-CommandExists gh ) { . "$HOME\Documents\PowerShell\Sources\Gh-Completion.ps1" } else { Write-Host "Gh not installed" }
+} else {
+    Write-Host "Gh file does not exist."
+}
 
 # Zoxide Check
 if (Test-CommandExists zoxide ) {
