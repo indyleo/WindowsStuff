@@ -48,8 +48,9 @@ keymap("v", "p", "P", opts)
 -- Toggle spellcheck off and on
 keymap("n", "<leader>sp", ":lua ToggleSpellCheck()<CR>", opts)
 
--- Source the main conf file
-keymap("n", "<leader>so", ":lua SourceConf()<CR>", opts)
+-- Source the main conf file and current file
+keymap("n", "<leader>so", ":lua SourceConf(Main)<CR>", opts)
+keymap("n", "<leader>se", ":lua SourceConf(Current)<CR>", opts)
 
 -- Transparent background toggle
 keymap("n", "<C-t>", ":lua ToggleTransparent()<CR>", opts)
@@ -100,7 +101,7 @@ keymap("n", "<leader>xt", ":Trouble todo toggle<CR>", { desc = "Open todos in tr
 keymap("n", "<leader>e", ":NvimTreeToggle<CR>", { desc = "Toggle file explorer" }, opts)
 
 -- Undotree
-vim.keymap.set('n', '<leader>dt', ":UndotreeToggle<CR>", {desc = "Toggles Undotreee"}, opts)
+keymap('n', '<leader>dt', ":UndotreeToggle<CR>", {desc = "Toggles Undotreee"}, opts)
 
 -- ToggleTerm
 keymap("n", "<C-q>", ":ToggleTerm<CR>", { desc = "Toggles Terminal" }, opts)
@@ -110,11 +111,14 @@ keymap("n", "<leader>/", ":lua require('Comment.api').toggle.linewise.current()<
 keymap("v", "<leader>/", "<esc><:lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>", { desc = "Comments Multi" }, opts)
 
 -- Telescope
-keymap("n", "<leader>ff", ":Telescope find_files<cr>", { desc = "Fuzzy find files in cwd" }, opts)
-keymap("n", "<leader>fr", ":Telescope oldfiles<cr>", { desc = "Fuzzy find recent files" }, opts)
-keymap("n", "<leader>fs", ":Telescope live_grep<cr>", { desc = "Find string in cwd" }, opts)
-keymap("n", "<leader>fc", ":Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" }, opts)
-keymap("n", "<leader>ft", ":TodoTelescope<cr>", { desc = "Find todos" }, opts)
+keymap("n", "<leader>ff", ":Telescope find_files<CR>", { desc = "Fuzzy find files in cwd" }, opts)
+keymap("n", "<leader>fr", ":Telescope oldfiles<CR>", { desc = "Fuzzy find recent files" }, opts)
+keymap("n", "<leader>fs", ":Telescope live_grep<CR>", { desc = "Find string in cwd" }, opts)
+keymap("n", "<leader>fc", ":Telescope grep_string<CR>", { desc = "Find string under cursor in cwd" }, opts)
+keymap("n", "<leader>ft", ":TodoTelescope<CR>", { desc = "Find todos" }, opts)
+
+-- Alpha Dashboard
+keymap("n", "<C-d>", ":Alpha<CR>", { desc = "Opens the Alpha Dashboard" }, opts)
 
 -- Zen Mode
 keymap("n", "<leader>zz", ":ZenMode<CR>", {desc = "Toggle zen mode"}, opts)
