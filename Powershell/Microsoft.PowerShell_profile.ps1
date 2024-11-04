@@ -7,12 +7,17 @@ function Test-CommandExists {
 
 # Check if the parent process is Neovim so fastfetch doesnt launch when in Neovim
 function Test-IsRunningInNeovim {
-    $currentProcess = Get-Process -Id $PID
-    $parentProcess = Get-Process -Id $currentProcess.Parent.Id -ErrorAction SilentlyContinue
-    $grandparentProcess = if ($parentProcess) { Get-Process -Id $parentProcess.Parent.Id -ErrorAction SilentlyContinue } else { $null }
+    try {
+        $currentProcess = Get-Process -Id $PID
+        $parentProcess = Get-Process -Id $currentProcess.Parent.Id -ErrorAction SilentlyContinue
+        $grandparentProcess = if ($parentProcess -and $parentProcess.Parent) { Get-Process -Id $parentProcess.Parent.Id -ErrorAction SilentlyContinue } else { $null }
 
-    # Check if either the parent or grandparent process is 'nvim'
-    return ($parentProcess -and $parentProcess.Name -eq 'nvim') -or ($grandparentProcess -and $grandparentProcess.Name -eq 'nvim')
+        # Check if either the parent or grandparent process is 'nvim'
+        return ($parentProcess -and $parentProcess.Name -eq 'nvim') -or ($grandparentProcess -and $grandparentProcess.Name -eq 'nvim')
+    } catch {
+        # If any errors occur, assume we're not running in Neovim
+        return $false
+    }
 }
 
 if (-not (Test-IsRunningInNeovim)) {
@@ -21,7 +26,7 @@ if (-not (Test-IsRunningInNeovim)) {
     } else {
         Write-Host "Fastfetch is not installed."
     }
-} 
+}
 
 # Varables Configs
 $VISUAL = if (Test-CommandExists codium) { 'codium' } else { Write-Host "VSCodium is not installed." }
