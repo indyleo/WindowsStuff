@@ -17,6 +17,7 @@ $FUNCTION = "$HOME\Documents\Powershell\Sources\Functions.ps1"
 # Imports
 Import-Module -Name Terminal-Icons
 Import-Module -Name gsudoModule
+Import-Module -Name posh-git
 
 # Opt-out of telemetry before doing anything, only if PowerShell is run as admin
 if ([bool]([System.Security.Principal.WindowsIdentity]::GetCurrent()).IsSystem) {
@@ -59,6 +60,9 @@ if (Test-Path $FUNCTION) {
 } else {
     Write-Host "Functions file does not exist."
 }
+
+# Gh & Git Completions
+if ( Test-CommandExists gh ) { . "$HOME\Documents\PowerShell\Sources\Gh-Completion" } else { Write-Host "Gh not installed" }
 
 # Zoxide Check
 if (Test-CommandExists zoxide ) {
