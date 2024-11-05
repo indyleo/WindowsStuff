@@ -89,12 +89,3 @@ Return
         MsgBox, Invalid Key. Press C for Control Panel or S for Settings.
     }
 Return
-
-;;; Rebinds
-#If WinActive("ahk_exe Neovide.exe")
-  ; Capslock -> Esc
-  Capslock::Esc
-
-  ; Esc -> CapsLock
-  Escape::CapsLock
-#If
