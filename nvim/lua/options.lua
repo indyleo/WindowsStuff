@@ -59,4 +59,4 @@ opt.formatoptions:remove { "c", "r", "o" }
 opt.linebreak = true
 opt.spelllang = 'en_us'
 opt.spell = false
-vim.opt.fillchars = { eob = ' ' }
+opt.fillchars = { eob = ' ' }
