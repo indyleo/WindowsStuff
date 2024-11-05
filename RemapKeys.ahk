@@ -91,7 +91,7 @@ Return
 Return
 
 ;;; Rebinds
-#If WinActive("ahk_exe Neovide.exe") || (WinActive("ahk_class ConsoleWindowClass") && WinExist("Neovim"))
+#If WinActive("ahk_exe Neovide.exe")
   ; Capslock -> Esc
   Capslock::Esc
 
