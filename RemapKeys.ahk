@@ -89,3 +89,12 @@ Return
         MsgBox, Invalid Key. Press C for Control Panel or S for Settings.
     }
 Return
+
+;;; Rebinds
+#If WinActive("ahk_exe Neovide.exe") || (WinActive("ahk_class ConsoleWindowClass") && WinExist("Neovim"))
+  ; Capslock -> Esc
+  Capslock::Esc
+
+  ; Esc -> CapsLock
+  Escape::CapsLock
+#If
