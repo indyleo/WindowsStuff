@@ -89,7 +89,7 @@ if (Test-Path "$HOME\Documents\PowerShell\Sources\Gh-Completion.ps1") {
 
 # Zoxide Check
 if (Test-CommandExists zoxide ) {
-    Invoke-Expression (& { (zoxide init powershell | Out-String) })
+    Invoke-Expression (& { (zoxide init powershell --cmd cd| Out-String) })
 } else {
     Write-Host "Zoxide is not installed."
 }
