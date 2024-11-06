@@ -30,9 +30,6 @@ return {
         -- Text
         "jsonls",
 
-        -- Shells
-        "powershell_es",
-        
         -- Langs
         "pyright",
         "lua_ls",
