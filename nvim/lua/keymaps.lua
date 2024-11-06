@@ -85,13 +85,8 @@ keymap("n", "<leader>wr", ":SessionRestore<CR>", { desc = "Restore session for c
 keymap("n", "<leader>ws", ":SessionSave<CR>", { desc = "Save session for auto session root dir" }, opts)
 
 -- Todo Comments
-keymap("n", "<C-d>", function()
-  require("todo-comments").jump_next()
-end, { desc = "Next todo comment" }, opts)
-
-keymap("n", "<C-c>", function()
-  require("todo-comments").jump_prev()
-end, { desc = "Previous todo comment" }, opts)
+keymap("n", "<C-d>", function() require("todo-comments").jump_next() end, { desc = "Next todo comment" }, opts)
+keymap("n", "<C-c>", function() require("todo-comments").jump_prev() end, { desc = "Previous todo comment" }, opts)
 
 -- Trouble
 keymap("n", "<leader>xw", ":Trouble diagnostics toggle<CR>", { desc = "Open trouble workspace diagnostics" }, opts)
