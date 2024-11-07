@@ -29,7 +29,6 @@ if (-not (Test-IsRunningInNeovim)) {
 }
 
 # Varables Configs
-$VISUAL = if (Test-CommandExists neovide) { 'neovide' } else { Write-Host "Neovide is not installed." }
 $EDITOR = if (Test-CommandExists nvim) { 'nvim' } else { Write-Host "Neovim ias not installed." }
 $AlIAS = "$HOME\Documents\Powershell\Sources\Aliases.ps1"
 $FUNCTION = "$HOME\Documents\Powershell\Sources\Functions.ps1"
