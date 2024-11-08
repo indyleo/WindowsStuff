@@ -13,6 +13,7 @@ Unblock-File $PROFILE
 ```pwsh
 Unblock-File $AlIAS
 Unblock-File $FUNCTION
+Unblock-File $HOME\Documents\PowerShell\Sources\Gh-Completion.ps1
 ```
 
 Nice Stuff For The Powershell config:
