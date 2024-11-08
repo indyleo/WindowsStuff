@@ -32,5 +32,6 @@ function pull { git pull }
 function clone { git clone "$args" }
 
 ### System Aliases
+function httpserver { python3 -m http.server }
 function sysinfo { Get-ComputerInfo }
 Set-Alias -Name neofetch -Value fastfetch
