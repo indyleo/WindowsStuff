@@ -1,4 +1,4 @@
-﻿;;; Varables
+;;; Varables
 USER = Indy
 
 ;;; Media/Audio Keys
@@ -53,15 +53,15 @@ Return
 Run, C:\Program Files\foobar2000\foobar2000.exe
 Return
 
-; Hotkey to open Windows Terminal
+; Hotkey to open Terminal
 !Enter:: 
-Run, wt.exe
+Run, C:\Program Files\WezTerm\wezterm-gui.exe
 Return
 
-; Hotkey to open Windows Terminal as admin
+; Hotkey to open Terminal as admin
 !^Enter:: 
 {
-  Run *RunAs "wt.exe"
+  Run *RunAs "C:\Program Files\WezTerm\wezterm-gui.exe"
 }
 Return
 
