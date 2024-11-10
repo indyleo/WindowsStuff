@@ -36,3 +36,9 @@ Move nvim to proper directory:
 ```pwsh
 mv .\nvim $HOME\AppData\Local
 ```
+
+Move wezterm to proper directory:
+```pwsh
+mv .\nvim $HOME\.config\
+```
+
