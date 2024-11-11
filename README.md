@@ -34,7 +34,7 @@ gsudo config CacheMode Auto
 
 Move nvim to proper directory:
 ```pwsh
-mv .\nvim $HOME\AppData\Local
+mv .\wezterm $HOME\AppData\Local
 ```
 
 Move wezterm to proper directory:
