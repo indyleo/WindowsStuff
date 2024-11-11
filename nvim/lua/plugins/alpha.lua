@@ -22,7 +22,8 @@ return {
       dashboard.button("e", "  > New File", ":ene<CR>"),
       dashboard.button("SPC ee", "  > Toggle file explorer", ":NvimTreeToggle<CR>"),
       dashboard.button("SPC ff", "󰱼  > Find File", ":Telescope find_files<CR>"),
-      dashboard.button("c", "  > Config Nvim", ":e C://Users//Indy//AppData//Local//nvim<CR>"),
+      dashboard.button("ce", "  > Config Nvim", ":e $HOME//AppData//Local//nvim<CR>"),
+      dashboard.button("ct", "  > Config WezTerm", ":e $HOME//.config//wezterm<CR>"),
       dashboard.button("q", "  > Quit Nvim", ":qa<CR>"),
     }
 
