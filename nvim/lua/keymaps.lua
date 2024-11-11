@@ -113,6 +113,8 @@ keymap({ "x", "v" }, "<leader>/", "<esc><:lua require('Comment.api').toggle.line
 -- Nvim Ufo
 keymap("n", "<leader>zr", function() require("ufo").openAllFolds() end, opts("Opens folds"))
 keymap("n", "<leader>zm", function() require("ufo").closeAllFolds() end, opts("Closes folds"))
+keymap("n", "<leader>zf", ":foldopen<CR>", opts("Opens folds"))
+keymap("n", "<leader>zc", ":foldclose<CR>", opts("Closes folds"))
 keymap("n", "<leader>zk", function ()
   local winid = require("ufo").peekFoldedLinesUnderCursor()
   if not winid then
