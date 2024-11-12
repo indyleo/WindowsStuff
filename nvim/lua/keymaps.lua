@@ -111,8 +111,8 @@ keymap("n", "<leader>/", ":lua require('Comment.api').toggle.linewise.current()<
 keymap({ "x", "v" }, "<leader>/", "<esc><:lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>", opts("Comments multi-line"))
 
 -- Nvim Ufo
-keymap("n", "<leader>zr", function() require("ufo").openAllFolds() end, opts("Opens folds"))
-keymap("n", "<leader>zm", function() require("ufo").closeAllFolds() end, opts("Closes folds"))
+keymap("n", "<leader>zr", function() require("ufo").openAllFolds() end, opts("Opens all folds"))
+keymap("n", "<leader>zm", function() require("ufo").closeAllFolds() end, opts("Closes all folds"))
 keymap("n", "<leader>zf", ":foldopen<CR>", opts("Opens folds"))
 keymap("n", "<leader>zc", ":foldclose<CR>", opts("Closes folds"))
 keymap("n", "<leader>zk", function ()
