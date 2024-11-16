@@ -15,7 +15,7 @@ function HttpServer(action)
         local cwd = vim.fn.getcwd()
 
         -- Path to the Python script
-        local python_script_path = vim.fn.expand("$HOME\\AppData\\Local\\nvim\\scripts\\httpserver.py")
+        local python_script_path = vim.fn.expand(vim.fn.stdpath("config") .. "/scripts/httpserver.py")
         -- Construct the command to run the Python script
         local python_command = string.format("python %s %s 8000", python_script_path, cwd)
 
@@ -49,4 +49,3 @@ function HttpServer(action)
 end
 
 return HttpServer
-
