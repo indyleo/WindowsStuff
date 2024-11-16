@@ -22,8 +22,8 @@ return {
       dashboard.button("e", "  > New File", ":ene<CR>"),
       dashboard.button("SPC ee", "  > Toggle file explorer", ":NvimTreeToggle<CR>"),
       dashboard.button("SPC ff", "󰱼  > Find File", ":Telescope find_files<CR>"),
-      dashboard.button("ce", "  > Config Nvim", ":e $HOME//AppData//Local//nvim<CR>"),
-      dashboard.button("ct", "  > Config WezTerm", ":e $HOME//.config//wezterm<CR>"),
+      dashboard.button("ce", "  > Config Nvim", ":e " .. vim.fn.stdpath("config") .. "<CR>"),
+      dashboard.button("ct", "  > Config WezTerm", ":e " .. vim.loop.os_homedir() .. "/.config/wezterm<CR>"),
       dashboard.button("q", "  > Quit Nvim", ":qa<CR>"),
     }
 
