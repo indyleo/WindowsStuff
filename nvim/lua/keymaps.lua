@@ -42,7 +42,7 @@ keymap("n", "<S-h>", ":bprevious<CR>", opt)
 keymap("n", "<S-q>", ":Bdelete!<CR>", opt)
 
 -- Clear highlights
-keymap("n", "<leader>hl", ":nohlsearch<CR>", opt)
+keymap("n", "<leader>hl", ":nohlsearch<CR>", opts("Clear highlights"))
 
 -- Better paste
 keymap("v", "p", "P", opt)
@@ -52,7 +52,7 @@ keymap("n", "<leader>sp", ":lua ToggleSpellCheck()<CR>", opts("Toggles spell che
 
 -- Source the main conf file and current file
 keymap("n", "<leader>so", ":lua SourceConf(Main)<CR>", opts("Source init.lua"))
-keymap("n", "<leader>se", ":lua SourceConf(Current)<CR>", opts("Source current file ini buffer"))
+keymap("n", "<leader>se", ":lua SourceConf(Current)<CR>", opts("Source current file in buffer"))
 
 -- Increment/Decrement numbers
 keymap("n", "a", "<C-a>", opt)
@@ -129,7 +129,8 @@ keymap("n", "<leader>fs", ":Telescope live_grep<CR>", opts("Find string in cwd")
 keymap("n", "<leader>fc", ":Telescope grep_string<CR>", opts("Find string under cursor in cwd"))
 keymap("n", "<leader>ft", ":TodoTelescope<CR>", opts("Find todos"))
 keymap("n", "<leader>fu", ":Telescope undo<CR>", opts("Opens undo managment"))
-keymap("n", "<leader>fn", ":Telescope notify<CR>", opts("Opens undo managment"))
+keymap("n", "<leader>fn", ":Telescope notify<CR>", opts("Opens notification histroy"))
+keymap("n", "<leader>fh", ":Telescope help_tags<CR>", opts("Fuzzy find help pages"))
 
 -- Lsp
 keymap("n", "gR", ":Telescope lsp_references<CR>", opts("Show definition, references"))
