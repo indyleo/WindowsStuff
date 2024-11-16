@@ -42,7 +42,7 @@ keymap("n", "<S-h>", ":bprevious<CR>", opt)
 keymap("n", "<S-q>", ":Bdelete!<CR>", opt)
 
 -- Clear highlights
-keymap("n", "<leader>h", ":nohlsearch<CR>", opt)
+keymap("n", "<leader>hl", ":nohlsearch<CR>", opt)
 
 -- Better paste
 keymap("v", "p", "P", opt)
