@@ -4,10 +4,10 @@ function SourceConf(target)
   local source_type
 
   if target == Main then
-    config_path = vim.fn.expand("$HOME/AppData/Local/nvim/init.lua")  -- Main config path
+    config_path = vim.fn.stdpath("config") .. "/init.lua"
     source_type = "Main configuration"
   elseif target == Current then
-    config_path = vim.api.nvim_buf_get_name(0)  -- Current file path
+    config_path = vim.api.nvim_buf_get_name(0) 
     source_type = "Current file"
   else
     print("Invalid target. Use Main or Current.")
