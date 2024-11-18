@@ -3,7 +3,12 @@ function InsertFileHeader()
   -- Get system username, date/time, and file type
   local user = os.getenv("USER") or os.getenv("USERNAME") or "unknown"
   local date_time = os.date("%A %B %d, %Y, %I:%M %p")
-  local file_type = vim.bo.filetype or "unknown"
+  local file_type = vim.bo.filetype
+
+  -- Replaces lang with unknown if not known
+  if not file_type or file_type == "" then
+    file_type = "unknown"
+  end
 
   -- Define a table mapping file types to comment styles
   local comment_styles = {
