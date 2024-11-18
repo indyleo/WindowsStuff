@@ -68,6 +68,9 @@ keymap("n", "<C-s>", "gg=G", opt)
 keymap("n", "<leader>hn", ":lua HttpServer(Start)<CR>", opts("Start http server"))
 keymap("n", "<leader>hf", ":lua HttpServer(Stop)<CR>", opts("Stop http server"))
 
+-- Insert file header
+keymap("n", "<leader>hi", ":lua InsertFileHeader()<CR>", opts("Insert a file header"))
+
 -- Insert --
 
 -- Press jk fast to enter
