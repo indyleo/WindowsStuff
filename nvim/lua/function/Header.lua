@@ -27,7 +27,7 @@ function InsertFileHeader()
     c = "//",
     cpp = "//",
 
-    -- Wrap Around Comments
+    -- "Wrap Around" Comments
     html = { "<!--", "-->" },
     css = { "/*", "*/" },
 
@@ -56,6 +56,6 @@ end
 
 -- Create an autocommand to automatically add the header on new file creation
 vim.api.nvim_create_autocmd("BufNewFile", {
-  pattern = "*", -- Applies to all new files
+  pattern = "*",
   callback = InsertFileHeader,
 })
