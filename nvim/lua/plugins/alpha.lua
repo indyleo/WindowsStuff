@@ -24,6 +24,7 @@ return {
       dashboard.button("SPC ff", "󰱼  > Find File", ":Telescope find_files<CR>"),
       dashboard.button("ce", "  > Config Nvim", ":e " .. vim.fn.stdpath("config") .. "<CR>"),
       dashboard.button("ct", "  > Config WezTerm", ":e " .. vim.loop.os_homedir() .. "/.config/wezterm<CR>"),
+      dashboard.button("cf", "  > Config Lf", ":e " .. vim.loop.os_homedir() .. "/AppData/Local/lf<CR>"),
       dashboard.button("q", "  > Quit Nvim", ":qa<CR>"),
     }
 
