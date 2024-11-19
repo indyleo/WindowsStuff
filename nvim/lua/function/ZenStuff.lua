@@ -7,6 +7,7 @@ function ToggleZen()
     vim.cmd("ColorizerToggle")
     vim.opt.number = true
     vim.opt.foldcolumn = '1'
+    vim.cmd("e") -- Needed to reload current file
     print("Zen Mode Off")
   elseif state == 1 then
     vim.cmd("ZenMode")
