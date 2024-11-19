@@ -19,7 +19,7 @@ return {
 
     -- Set menu
     dashboard.section.buttons.val = {
-      dashboard.button("e", "  > New File", ":ene<CR>"),
+      dashboard.button("e", "  > New File", ":lua AskNewFileName()<CR>"),
       dashboard.button("SPC ee", "  > Toggle file explorer", ":NvimTreeToggle<CR>"),
       dashboard.button("SPC ff", "󰱼  > Find File", ":Telescope find_files<CR>"),
       dashboard.button("ce", "  > Config Nvim", ":e " .. vim.fn.stdpath("config") .. "<CR>"),
