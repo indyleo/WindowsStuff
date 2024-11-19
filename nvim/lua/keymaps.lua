@@ -109,6 +109,9 @@ keymap("n", "<leader>cp", ":lua require('nvim-tree.api').tree.change_root_to_par
 -- ToggleTerm
 keymap("n", "<C-q>", ":ToggleTerm<CR>", opt)
 
+-- Alpha Nvim
+keymap("n", "<C-z>", ":Alpha<CR>", opt)
+
 -- Comment
 keymap("n", "<leader>/", ":lua require('Comment.api').toggle.linewise.current()<CR>", opts("Comments line"))
 keymap({ "x", "v" }, "<leader>/", "<esc><:lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>", opts("Comments multi-line"))
