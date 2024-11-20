@@ -8,13 +8,21 @@ local config = wezterm.config_builder()
 -- This is where you actually apply your config choices
 config.color_scheme = "Dark+"
 
+-- Font
 config.font = wezterm.font("CaskaydiaCove NF")
 config.font_size = 12
+
+-- Shell
 config.default_prog = { "pwsh.exe" }
 
+-- Window Stuff
 config.window_decorations = "INTEGRATED_BUTTONS | RESIZE"
-
+config.use_fancy_tab_bar = true
 config.enable_tab_bar = true
+
+-- Blur
+config.window_background_opacity = 0.85
+config.win32_system_backdrop = "Acrylic"
 
 wezterm.on("gui-startup", function(cmd)
   local tab, pane, window = mux.spawn_window(cmd or {})
