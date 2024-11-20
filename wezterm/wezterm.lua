@@ -14,7 +14,7 @@ config.default_prog = { "pwsh.exe" }
 
 config.window_decorations = "RESIZE"
 
-config.enable_tab_bar = false
+config.enable_tab_bar = true
 
 wezterm.on('gui-startup', function(cmd)
   local tab, pane, window = mux.spawn_window(cmd or {})
