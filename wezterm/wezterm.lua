@@ -16,7 +16,7 @@ config.window_decorations = "RESIZE"
 
 config.enable_tab_bar = true
 
-wezterm.on('gui-startup', function(cmd)
+wezterm.on("gui-startup", function(cmd)
   local tab, pane, window = mux.spawn_window(cmd or {})
   window:gui_window():maximize()
 end)
