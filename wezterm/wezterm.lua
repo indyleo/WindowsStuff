@@ -12,7 +12,7 @@ config.font = wezterm.font("CaskaydiaCove NF")
 config.font_size = 12
 config.default_prog = { "pwsh.exe" }
 
-config.window_decorations = "RESIZE"
+config.window_decorations = "INTEGRATED_BUTTONS | RESIZE"
 
 config.enable_tab_bar = true
 
