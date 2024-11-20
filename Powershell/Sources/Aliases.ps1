@@ -32,6 +32,7 @@ function commit { param($m) git commit -m "$m" }
 function push { git push }
 function pull { git pull }
 function clone { git clone "$args" }
+Set-Alias -Name lg -Value lazygit
 
 ### System Aliases
 function sysinfo { Get-ComputerInfo }
