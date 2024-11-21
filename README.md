@@ -1,7 +1,7 @@
 # WindowsStuff
 This Is my ahk and powershell setups
 
-## Reqired Steps to get working: (I think)
+## Reqired Steps to get working:
 - Run this: then restart
 ```pwsh
 Set-ExecutionPolicy RemoteSigned 
@@ -36,17 +36,13 @@ For A Better Gsudo do this:
 gsudo config CacheMode Auto
 ```
 
-Move nvim to proper directory:
+## Proper locations for config file:
 ```pwsh
-mv .\nvim $HOME\AppData\Local
+mv .\nvim $HOME\AppData\Local\
 ```
-
-Move wezterm to proper directory:
 ```pwsh
-mv.\wezterm $HOME\.config\
+mv.\wezterm .\fastfetch  $HOME\.config\
 ```
-
-Move fastfetch to proper directory:
 ```pwsh
-mv .\fastfetch $HOME\.config\
+mv .\.gitconfig $HOME\
 ```
