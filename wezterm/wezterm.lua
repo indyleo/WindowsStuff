@@ -24,6 +24,7 @@ config.enable_tab_bar = true
 config.window_background_opacity = 0.85
 config.win32_system_backdrop = "Acrylic"
 
+-- Set Window To Fullscreen
 wezterm.on("gui-startup", function(cmd)
   local tab, pane, window = mux.spawn_window(cmd or {})
   window:gui_window():maximize()
