@@ -14,6 +14,7 @@ config.font_size = 12
 
 -- Shell
 config.default_prog = { "pwsh.exe" }
+config.default_cwd = wezterm.home_dir
 
 -- Window Stuff
 config.window_decorations = "INTEGRATED_BUTTONS | RESIZE"
