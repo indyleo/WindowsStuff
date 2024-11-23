@@ -17,6 +17,7 @@ config.default_prog = { "pwsh.exe" }
 
 -- Window Stuff
 config.window_decorations = "INTEGRATED_BUTTONS | RESIZE"
+-- config.window_decorations = "NONE"
 config.use_fancy_tab_bar = true
 config.enable_tab_bar = true
 
