@@ -53,9 +53,3 @@ function InsertFileHeader()
   -- Insert the comment at the top of the file
   vim.api.nvim_buf_set_lines(0, 0, 0, false, { comment })
 end
-
--- Create an autocommand to automatically add the header on new file creation
-vim.api.nvim_create_autocmd("BufNewFile", {
-  pattern = "*",
-  callback = InsertFileHeader,
-})

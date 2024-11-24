@@ -7,7 +7,7 @@ function SourceConf(target)
     config_path = vim.fn.stdpath("config") .. "/init.lua"
     source_type = "Main configuration"
   elseif target == Current then
-    config_path = vim.api.nvim_buf_get_name(0) 
+    config_path = vim.api.nvim_buf_get_name(0)
     source_type = "Current file"
   else
     print("Invalid target. Use Main or Current.")

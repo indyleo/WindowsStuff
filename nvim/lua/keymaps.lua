@@ -2,7 +2,7 @@
 local keymap = vim.keymap.set
 -- Keymap option
 local function opts(desc)
-    return { noremap = true, silent = true, desc = desc }
+  return { noremap = true, silent = true, desc = desc }
 end
 local opt = { noremap = true, silent = true }
 
@@ -21,8 +21,8 @@ vim.g.maplocalleader = " "
 
 ---- Non-Plugin ----
 
--- Mouse keymaps 
-keymap({"n", "i", "v", "x"}, "<RightMouse>", "<Nop>", opt)
+-- Mouse keymaps
+keymap({ "n", "i", "v", "x" }, "<RightMouse>", "<Nop>", opt)
 
 -- Normal --
 
@@ -109,11 +109,11 @@ keymap("n", "<leader>cp", ":lua require('nvim-tree.api').tree.change_root_to_par
 -- Harpoon
 keymap("n", "<leader>a", function() require("harpoon"):list():add() end, opts("Marks a file"))
 keymap("n", "<C-e>", function() require("harpoon").ui:toggle_quick_menu(require("harpoon"):list()) end, opts("Opens Harpoon Menu"))
-keymap("n", "<leader>1", function() require("harpoon").nav_file(1) end, opts("Open file 1"))
-keymap("n", "<leader>2", function() require("harpoon").nav_file(2) end, opts("Open file 2"))
-keymap("n", "<leader>3", function() require("harpoon").nav_file(3) end, opts("Open file 3"))
-keymap("n", "<leader>4", function() require("harpoon").nav_file(4) end, opts("Open file 4"))
-keymap("n", "<leader>5", function() require("harpoon").nav_file(5) end, opts("Open file 5"))
+keymap("n", "<leader>1", function() require("harpoon"):list():select(1) end, opts("Open file 1"))
+keymap("n", "<leader>2", function() require("harpoon"):list():select(2) end, opts("Open file 2"))
+keymap("n", "<leader>3", function() require("harpoon"):list():select(3) end, opts("Open file 3"))
+keymap("n", "<leader>4", function() require("harpoon"):list():select(4) end, opts("Open file 4"))
+keymap("n", "<leader>5", function() require("harpoon"):list():select(5) end, opts("Open file 5"))
 
 -- ToggleTerm
 keymap("n", "<C-q>", ":ToggleTerm<CR>", opt)
@@ -130,7 +130,7 @@ keymap("n", "<leader>zr", function() require("ufo").openAllFolds() end, opts("Op
 keymap("n", "<leader>zm", function() require("ufo").closeAllFolds() end, opts("Closes all folds"))
 keymap("n", "<leader>zf", ":foldopen<CR>", opts("Opens folds"))
 keymap("n", "<leader>zc", ":foldclose<CR>", opts("Closes folds"))
-keymap("n", "<leader>zk", function ()
+keymap("n", "<leader>zk", function()
   local winid = require("ufo").peekFoldedLinesUnderCursor()
   if not winid then
     vim.lsp.buf.hover()
