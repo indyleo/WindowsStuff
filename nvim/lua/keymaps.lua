@@ -81,6 +81,8 @@ keymap("i", "jk", "<esc>", opt)
 -- Stay in indent mode
 keymap("v", "<", "<gv", opt)
 keymap("v", ">", ">gv", opt)
+keymap("v", "J", ":m '>+1<CR>gv=gv", opt)
+keymap("v", "K", ":m '<-2<CR>gv=gv", opt)
 
 ---- Plugins ----
 
