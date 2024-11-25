@@ -161,7 +161,7 @@ keymap("n", "<leader>D", ":Telescope diagnostics bufnr=0<CR>", opts("Show  diagn
 keymap("n", "<leader>d", vim.diagnostic.open_float, opts("Show diagnostics for line"))
 keymap("n", "[d", vim.diagnostic.goto_prev, opts("Jump to previous diagnostic in buffer"))
 keymap("n", "]d", vim.diagnostic.goto_next, opts("Jump to next diagnostic in buffer"))
-keymap("n", "K", vim.lsp.buf.hover, opts("Show documentation for what is under cursor"))
+keymap("n", "gK", vim.lsp.buf.hover, opts("Show documentation for what is under cursor"))
 keymap("n", "<leader>rs", ":LspRestart<CR>", opts("Mapping to restart lsp if necessary"))
 
 -- Zen Mode
