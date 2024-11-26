@@ -8,24 +8,51 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   end,
 })
 
--- Test
--- -- Source cwf is nvim conf file
--- vim.api.nvim_create_autocmd("BufWritePost", {
---   pattern = "*.lua",
---   callback = function()
---     -- Get the full path of the current file
---     local current_file = vim.fn.expand("%:p")
---     local config_lua_path = vim.fn.stdpath("config") .. "/lua"
---
---     -- Check if the file is inside the Neovim config Lua directory
---     if current_file:sub(1, #config_lua_path) == config_lua_path then
---       vim.cmd("luafile " .. current_file)
---       print("Sourced: " .. current_file)
---     else
---       print("Not in Neovim configuration directory: " .. current_file)
---     end
---   end,
--- })
+-- Source cwf is nvim conf file
+vim.api.nvim_create_autocmd("BufWritePost", {
+  pattern = "*.lua",
+  callback = function()
+    -- Normalize path separators for comparison
+    local function normalize_path(path)
+      return path:gsub("\\", "/")
+    end
+
+    -- Get the full path of the current file and normalize it
+    local current_file = normalize_path(vim.fn.expand("%:p"))
+    local current_filename = vim.fn.expand("%:t")
+    local config_path = normalize_path(vim.fn.stdpath("config") .. "/lua")
+
+    -- List of files to exclude
+    local excluded_files = { "autocommand.lua", "options.lua" }
+
+    -- Check if the current file is in the exclusion list
+    for _, excluded_file in ipairs(excluded_files) do
+      if current_filename == excluded_file then
+        vim.notify("Skipping reloading for excluded file: " .. current_filename, vim.log.levels.INFO)
+        return -- Exit the callback if the file is excluded
+      end
+    end
+
+    -- Debugging: Print normalized paths
+    vim.notify("Normalized Current File: " .. current_file, vim.log.levels.DEBUG)
+    vim.notify("Normalized Config Path: " .. config_path, vim.log.levels.DEBUG)
+
+    -- Check if the current file is within the Neovim config directory
+    if current_file:sub(1, #config_path) == config_path then
+      -- Try to source the file
+      local ok, err = pcall(function()
+        vim.cmd.source(current_file)
+      end)
+      if ok then
+        vim.notify("Reloaded: " .. current_filename, vim.log.levels.INFO)
+      else
+        vim.notify("Failed to Reloaded: " .. err, vim.log.levels.WARN)
+      end
+    else
+      vim.notify("Not in Neovim configuration directory.", vim.log.levels.INFO)
+    end
+  end,
+})
 
 -- Automatically add the header on new file creation
 vim.api.nvim_create_autocmd("BufNewFile", {

@@ -2,24 +2,25 @@
 function SourceConf(target)
   local config_path
   local source_type
+  local current_filename = vim.fn.expand("%:t")
 
   if target == Main then
     config_path = vim.fn.stdpath("config") .. "/init.lua"
-    source_type = "Main configuration"
+    source_type = "init.lua"
   elseif target == Current then
     config_path = vim.api.nvim_buf_get_name(0)
-    source_type = "Current file"
+    source_type = current_filename
   else
-    print("Invalid target. Use Main or Current.")
+    vim.notify("Invalid target. Use Main or Current.", vim.log.levels.WARN)
     return
   end
 
-  local success, err = pcall(vim.cmd, "source " .. config_path)  -- Use pcall for error handling
+  local success, err = pcall(function() vim.cmd("source " .. config_path) end)
 
   if success then
-    print("Reloaded " .. source_type .. " successfully")
+    vim.notify("Reloaded: " .. source_type .. " successfully", vim.log.levels.INFO)
   else
-    print("Error reloading " .. source_type .. ": " .. err)
+    vim.notify("Error reloading " .. source_type .. ": " .. err, vim.log.levels.ERROR)
   end
 end
 

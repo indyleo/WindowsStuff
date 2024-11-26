@@ -48,28 +48,28 @@ keymap("n", "<leader>hl", ":nohlsearch<CR>", opts("Clear highlights"))
 keymap("v", "p", "P", opt)
 
 -- Toggle spellcheck off and on
-keymap("n", "<leader>sp", ":lua ToggleSpellCheck()<CR>", opts("Toggles spell check"))
+keymap("n", "<leader>sp", function() ToggleSpellCheck() end, opts("Toggles spell check"))
 
 -- Source the main conf file and current file
-keymap("n", "<leader>so", ":lua SourceConf(Main)<CR>", opts("Source init.lua"))
-keymap("n", "<leader>se", ":lua SourceConf(Current)<CR>", opts("Source current file in buffer"))
+keymap("n", "<leader>so", function() SourceConf(Main) end, opts("Source init.lua"))
+keymap("n", "<leader>se", function() SourceConf(Current) end, opts("Source current file in buffer"))
 
 -- Increment/Decrement numbers
 keymap("n", "a", "<C-a>", opt)
 keymap("n", "z", "<C-x>", opt)
 
 -- Number Options
-keymap("n", "<C-n>", ":lua ToggleLineNumbers()<CR>", opt)
+keymap("n", "<C-n>", function() ToggleLineNumbers() end, opt)
 
 -- Format File
 keymap("n", "<C-s>", "gg=G", opt)
 
 -- Http Server
-keymap("n", "<leader>hn", ":lua HttpServer(Start)<CR>", opts("Start http server"))
-keymap("n", "<leader>hf", ":lua HttpServer(Stop)<CR>", opts("Stop http server"))
+keymap("n", "<leader>hn", function() HttpServer(Start) end, opts("Start http server"))
+keymap("n", "<leader>hf", function() HttpServer(Stop) end, opts("Stop http server"))
 
 -- Insert file header
-keymap("n", "<leader>hi", ":lua InsertFileHeader()<CR>", opts("Insert a file header"))
+keymap("n", "<leader>hi", function() InsertFileHeader() end, opts("Insert a file header"))
 
 -- Insert --
 
@@ -105,8 +105,8 @@ keymap("n", "<leader>ef", ":NvimTreeFindFileToggle<CR>", opts("Toggle file explo
 keymap("n", "<leader>ec", ":NvimTreeCollapse<CR>", opts("Collapse file explorer"))
 keymap("n", "<leader>er", ":NvimTreeRefresh<CR>", opts("Refresh file explorer"))
 keymap("n", "<leader>eb", ":NvimTreeClipboard<CR>", opts("Show whats in Nvim-tree clipboard"))
-keymap("n", "<leader>cn", ":lua require('nvim-tree.api').tree.change_root_to_node()<CR>", opts("Cd into a child directory"))
-keymap("n", "<leader>cp", ":lua require('nvim-tree.api').tree.change_root_to_parent()<CR>", opts("Cd into a parent directory"))
+keymap("n", "<leader>cn", function() require('nvim-tree.api').tree.change_root_to_node() end, opts("Cd into a child directory"))
+keymap("n", "<leader>cp", function() require('nvim-tree.api').tree.change_root_to_parent() end, opts("Cd into a parent directory"))
 
 -- Harpoon
 keymap("n", "<leader>a", function() require("harpoon"):list():add() end, opts("Marks a file"))
@@ -151,18 +151,18 @@ keymap("n", "<leader>fh", ":Telescope help_tags<CR>", opts("Fuzzy find help page
 
 -- Lsp
 keymap("n", "gR", ":Telescope lsp_references<CR>", opts("Show definition, references"))
-keymap("n", "gD", vim.lsp.buf.declaration, opts("Go to declaration"))
+keymap("n", "gD", function() vim.lsp.buf.declaration() end, opts("Go to declaration"))
 keymap("n", "gd", ":Telescope lsp_definitions<CR>", opts("Show lsp definitions"))
 keymap("n", "gi", ":Telescope lsp_implementations<CR>", opts("Show lsp implementations"))
 keymap("n", "gt", ":Telescope lsp_type_definitions<CR>", opts("Show lsp type definitions"))
-keymap({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts("See available code actions, in visual mode will apply to selection"))
-keymap("n", "<leader>rn", vim.lsp.buf.rename, opts("Smart rename"))
+keymap({ "n", "v" }, "<leader>ca", function() vim.lsp.buf.code_action() end, opts("See available code actions, in visual mode will apply to selection"))
+keymap("n", "<leader>rn", function() vim.lsp.buf.rename() end, opts("Smart rename"))
 keymap("n", "<leader>D", ":Telescope diagnostics bufnr=0<CR>", opts("Show  diagnostics for file"))
-keymap("n", "<leader>d", vim.diagnostic.open_float, opts("Show diagnostics for line"))
-keymap("n", "[d", vim.diagnostic.goto_prev, opts("Jump to previous diagnostic in buffer"))
-keymap("n", "]d", vim.diagnostic.goto_next, opts("Jump to next diagnostic in buffer"))
-keymap("n", "gK", vim.lsp.buf.hover, opts("Show documentation for what is under cursor"))
+keymap("n", "<leader>d", function() vim.diagnostic.open_float() end, opts("Show diagnostics for line"))
+keymap("n", "[d", function() vim.diagnostic.goto_prev() end, opts("Jump to previous diagnostic in buffer"))
+keymap("n", "]d", function() vim.diagnostic.goto_next() end, opts("Jump to next diagnostic in buffer"))
+keymap("n", "gK", function() vim.lsp.buf.hover() end, opts("Show documentation for what is under cursor"))
 keymap("n", "<leader>rs", ":LspRestart<CR>", opts("Mapping to restart lsp if necessary"))
 
 -- Zen Mode
-keymap("n", "<leader>zz", ":lua ToggleZen()<CR>", opts("Toggle zen mode"))
+keymap("n", "<leader>zz", function() ToggleZen() end, opts("Toggle zen mode"))

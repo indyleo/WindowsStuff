@@ -70,9 +70,7 @@ if vim.g.neovide then
   vim.g.neovide_padding_bottom = 15
   vim.g.neovide_padding_right = 15
   vim.g.neovide_padding_left = 15
-  vim.g.neovide_confirm_quit = true
   vim.g.neovide_fullscreen = true
-  vim.g.neovide_input_ime = true
   vim.g.neovide_cursor_vfx_mode = "pixiedust"
   vim.cmd("cd $HOME")
 end

@@ -2,9 +2,9 @@
 function ToggleSpellCheck()
   if vim.opt.spell:get() then
     vim.opt.spell = false
-    print("Spell checker turned off")
+    vim.notify("Spell checker turned off", vim.log.levels.INFO)
   else
     vim.opt.spell = true
-    print("Spell checker turned on")
+    vim.notify("Spell checker turned on", vim.log.levels.INFO)
   end
 end

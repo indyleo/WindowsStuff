@@ -6,7 +6,7 @@ function AskNewFileName()
       local filepath = current_dir .. "/" .. filename
       vim.cmd("e " .. filepath)
     else
-      print("No file created")
+      vim.notify("No file created", vim.log.levels.ERROR)
     end
   end)
 end
