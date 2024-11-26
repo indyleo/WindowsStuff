@@ -21,9 +21,6 @@ vim.g.maplocalleader = " "
 
 ---- Non-Plugin ----
 
--- Mouse keymaps
-keymap({ "n", "i", "v", "x" }, "<RightMouse>", "<Nop>", opt)
-
 -- Normal --
 
 -- Better window managment
