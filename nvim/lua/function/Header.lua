@@ -30,6 +30,7 @@ function InsertFileHeader()
     -- "Wrap Around" Comments
     html = { "<!--", "-->" },
     css = { "/*", "*/" },
+    markdown = { "<!--", "-->" },
 
     -- "Other" Comments
     lua = "--",

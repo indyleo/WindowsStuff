@@ -25,30 +25,46 @@ return {
     })
 
     mason_lspconfig.setup({
-      -- list of servers for mason to install
       ensure_installed = {
         -- Text
         "jsonls",
         "yamlls",
-        "grammarly",
-        
-        -- Langs
-        "pyright",
-        "lua_ls",
+        "ltex",
+
+        -- Web
         "html",
         "cssls",
         "eslint",
+
+        -- Langs
+        "pyright",
+        "lua_ls",
       },
     })
 
     mason_tool_installer.setup({
       ensure_installed = {
-        "prettier", -- prettier formatter
-        "stylua", -- lua formatter
-        "isort", -- python formatter
-        "black", -- python formatter
-        "pylint",
+        -- Text
+        "actionlint",
+        "jsonlint",
+        "markdownlint-cli2",
+        "codespell",
+
+        -- Git
+        "gitleaks",
+        "gitlint",
+
+        -- Web
+        "htmlhint",
+        "stylelint",
         "eslint_d",
+
+        -- Langs
+        "prettier",
+        "stylua",
+        "isort",
+        "black",
+        "pylint",
       },
     })
   end,
