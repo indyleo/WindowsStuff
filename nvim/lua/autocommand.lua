@@ -28,7 +28,7 @@ vim.api.nvim_create_autocmd("BufWritePost", {
     -- Check if the current file is in the exclusion list
     for _, excluded_file in ipairs(excluded_files) do
       if current_filename == excluded_file then
-        vim.notify("Skipping reloading for excluded file: " .. current_filename, vim.log.levels.INFO)
+        vim.notify("Skipping reloading for excluded file: " .. current_filename, vim.log.levels.WARN)
         return -- Exit the callback if the file is excluded
       end
     end
@@ -49,7 +49,7 @@ vim.api.nvim_create_autocmd("BufWritePost", {
         vim.notify("Failed to Reloaded: " .. err, vim.log.levels.WARN)
       end
     else
-      vim.notify("Not in Neovim configuration directory.", vim.log.levels.INFO)
+      vim.notify("Not in Neovim configuration directory.", vim.log.levels.WARN)
     end
   end,
 })
