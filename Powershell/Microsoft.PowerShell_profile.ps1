@@ -87,6 +87,12 @@ if (Test-Path "$HOME\Documents\PowerShell\Sources\Gh-Completion.ps1") {
   Write-Host "Gh file does not exist."
 }
 
+if (Test-Path "$HOME\Documents\PowerShell\Sources\Wezterm-Completion.ps1") {
+  if ( Test-CommandExists wezterm ) { . "$HOME\Documents\PowerShell\Sources\Wezterm-Completion.ps1" } else { Write-Host "Wezterm not installed" }
+} else {
+  Write-Host "Wezterm file does not exist."
+}
+
 # Zoxide Check
 if (Test-CommandExists zoxide ) {
   Invoke-Expression (& { (zoxide init powershell --cmd cd | Out-String) })
