@@ -58,6 +58,9 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 vim.api.nvim_create_autocmd("BufNewFile", {
   pattern = "*",
   callback = function()
-    InsertFileHeader()
+    -- Delay execution to ensure filetype is set
+    vim.defer_fn(function()
+      InsertFileHeader()
+    end, 10) -- Delay of 10ms
   end,
 })
