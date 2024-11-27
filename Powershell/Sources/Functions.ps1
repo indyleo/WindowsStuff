@@ -14,6 +14,39 @@ function ff($name) {
 }
 function nf { param($name) New-Item -ItemType "file" -Path . -Name $name }
 
+function New-SymbolicLink {
+param (
+    [Parameter(Mandatory)]
+    [string]$Path,
+
+    [Parameter(Mandatory)]
+    [string]$Target
+  )
+  try {
+    New-Item -Path $Path -ItemType SymbolicLink -Target $Target -Force
+    Write-Host "Symbolic link created: $Path -> $Target" -ForegroundColor Green
+  } catch {
+    Write-Host "Failed to create symbolic link: $_" -ForegroundColor Red
+  }
+}
+
+function Remove-SymbolicLink {
+param (
+    [Parameter(Mandatory)]
+    [string]$Path
+  )
+  try {
+    if (Test-Path $Path) {
+      Remove-Item -Path $Path -Force
+      Write-Host "Symbolic link removed: $Path" -ForegroundColor Green
+    } else {
+      Write-Host "Path does not exist: $Path" -ForegroundColor Yellow
+    }
+  } catch {
+    Write-Host "Failed to remove symbolic link: $_" -ForegroundColor Red
+  }
+}
+
 # Text Stuff
 function grep($regex, $dir) {
   if ( $dir ) {
