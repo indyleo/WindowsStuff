@@ -47,9 +47,6 @@ if (Test-CommandExists eza) {
   function ezarecurse { eza -aR --group-directories-first --color=auto @args }
   Set-Alias -Name lr -Value ezarecurse -Force
 
-  function ezagit { eza --git --group-directories-first --color=auto @args }
-  Set-Alias -Name lr -Value ezarecurse -Force
-
   function ezaonlyhidden { eza -a @args | rg "^\." }
   Set-Alias -Name l. -Value ezaonlyhidden -Force
 } else { 

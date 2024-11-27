@@ -35,7 +35,6 @@ $AlIAS = "$HOME\Documents\Powershell\Sources\Aliases.ps1"
 $FUNCTION = "$HOME\Documents\Powershell\Sources\Functions.ps1"
 
 # Imports
-Import-Module -Name Terminal-Icons
 Import-Module -Name gsudoModule
 Import-Module -Name posh-git
 

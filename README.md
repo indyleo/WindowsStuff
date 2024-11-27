@@ -19,17 +19,13 @@ Unblock-File $HOME\Documents\PowerShell\Sources\Gh-Completion.ps1
 ```
 
 ## Nice Stuff For The Powershell config:
-- Do this for ls to look better: 
-```pwsh
-Install-Module -Name Terminal-Icons -Repository PSGallery -Scope CurrentUser -Force
-```
-
 - Do this for git completions: 
 ```pwsh
 Install-Module -Name posh-git -Repository PSGallery -Scope CurrentUser -Force
 ```
 
-- You should Use a Nerd Font: https://github.com/ryanoasis/nerd-fonts/releases/
+- You should Use a [Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases/) My Personal Fav is Cascadia Code NF
+
 
 For A Better Gsudo do this:
 ```pwsh
