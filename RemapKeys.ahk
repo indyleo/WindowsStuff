@@ -1,5 +1,5 @@
 ;;; Varables
-USER = Indy
+USER = UR-USER-HERE
 
 ;;; Media/Audio Keys
 
@@ -31,8 +31,8 @@ Send, ^#{Right}
 return
 
 ; Close Focued Window
-!q:: ; Alt + Q
-    WinClose, A
+!q::
+WinClose, A
 return
 
 ;;; App Opening Keys
@@ -77,16 +77,51 @@ Return
 
 ; Hotkey to open Control Panel, or Setting
 !s::
-    KeyWait, s, D ; Wait for the S key to be pressed down
-    KeyWait, s ; Wait for the S key to be released
-    Input, SingleKey, L1 ; Wait for the next key press
-    if (SingleKey = "c") {
-        Run, control.exe ; Open Control Panel
-    }
-    else if (SingleKey = "s") {
-        Run, ms-settings: ; Open Settings app
-    }
-    else {
-        MsgBox, Invalid Key. Press C for Control Panel or S for Settings.
-    }
+KeyWait, s, D ; Wait for the S key to be pressed down
+KeyWait, s ; Wait for the S key to be released
+Input, SingleKey, L1 ; Wait for the next key press
+if (SingleKey = "c") {
+  Run, control.exe ; Open Control Panel
+}
+else if (SingleKey = "s") {
+  Run, ms-settings: ; Open Settings app
+}
+else {
+  MsgBox, Invalid Key. Press C for Control Panel or S for Settings.
+}
 Return
+
+;;; A key to different key
+
+; Caps -> Esc & Esc -> Caps (only if neovide/vim is focused)
+#IfWinActive ahk_exe Neovide.exe
+Capslock::Esc
+Esc::Capslock
+#IfWinActive
+
+#IfWinActive, ahk_class org.wezfurlong.wezterm
+IfWinExist, PowerShell
+Capslock::Esc
+Esc::Capslock
+#If
+
+;;; Debug
+
+; Just Win Title 
+F1::
+WinGetTitle, Title, A
+MsgBox, Window Title: %Title%
+Return
+
+; Just Win Class 
+F2::
+WinGetClass, Class, A
+MsgBox, Window Class: %Class%
+Return
+
+; Win Class & Title
+F3::
+WinGetActiveTitle, Title
+WinGetClass, Class, A
+MsgBox, Active Window Title: %Title%`nActive Window Class: %Class%
+return
