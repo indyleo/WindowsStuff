@@ -1,8 +1,10 @@
 ### Movement Aliases
 function mkcd { param($dir) mkdir $dir -Force; Set-Location $dir }
+function home { Set-Location -Path $HOME }
+function conf { Set-Location -Path $HOME\.config }
 function down { Set-Location -Path $HOME\Downloads }
 function docs { Set-Location -Path $HOME\Documents }
-function dats { Set-Location -Path $HOME\AppData\ }
+function dats { Set-Location -Path $HOME\AppData }
 function .. { Set-Location -Path .. }
 
 ### Permision Aliases
@@ -19,10 +21,56 @@ function Edit-Function { nvim $FUNCTION }
 ### Shell Aliases
 function Reload-Profile { & $profile }
 function k9 { Stop-Process -Name $args[0] }
-function la { Get-ChildItem -Path . -Force | Format-Table -AutoSize }
-function ll { Get-ChildItem -Path . -Force -Hidden | Format-Table -AutoSize }
 function httpserver { python3 -m http.server }
+function pg { ping -n 10 @args}
 function wq { exit }
+
+### Overwite Aliases
+
+# Ls
+if (Test-CommandExists eza) {
+  function ezabase { eza --group-directories-first --color=auto @args }
+  Set-Alias -Name ls -Value ezabase -Force
+
+  function ezahidden { eza -a --group-directories-first --color=auto @args }
+  Set-Alias -Name la -Value ezahidden -Force
+
+  function ezalist { eza -lF --group-directories-first --color=auto @args }
+  Set-Alias -Name ll -Value ezalist -Force
+
+  function ezafav { eza -alF --group-directories-first --color=auto @args }
+  Set-Alias -Name l -Value ezafav -Force
+
+  function ezatree { eza -a --tree --group-directories-first --color=auto @args }
+  Set-Alias -Name lt -Value ezatree -Force
+
+  function ezarecurse { eza -aR --group-directories-first --color=auto @args }
+  Set-Alias -Name lr -Value ezarecurse -Force
+
+  function ezagit { eza --git --group-directories-first --color=auto @args }
+  Set-Alias -Name lr -Value ezarecurse -Force
+
+  function ezaonlyhidden { eza -a @args | rg "^\." }
+  Set-Alias -Name l. -Value ezaonlyhidden -Force
+} else { 
+  Write-Host "Eza is not installed." 
+}
+
+# Cat
+if (Test-CommandExists bat) {
+  function batcat { bat -pp @args }
+  Set-Alias -Name cat -Value batcat -Force
+} else {
+  Write-Host "Bat is not installed."
+}
+
+# Find
+if (Test-CommandExists fd) {
+  function fdfind { fd   @args }
+  Set-Alias -Name find -Value fdfind -Force
+} else {
+  Write-Host "Fd is not installed."
+}
 
 ### Git Aliases
 function stat { git status }

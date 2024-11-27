@@ -94,6 +94,6 @@ if (Test-CommandExists zoxide ) {
   Write-Host "Zoxide is not installed."
 }
 
-### Oh My Posh Setup
-if (Test-CommandExists oh-my-posh) { oh-my-posh init pwsh --config https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/cobalt2.omp.json | Invoke-Expression }
-else { Write-Host "Oh My Posh is not installed." }
+### Starship Prompt Setup
+if ( Test-CommandExists starship ) { Invoke-Expression (&starship init powershell) }
+else { Write-Host "Statship prompt is not installed" }

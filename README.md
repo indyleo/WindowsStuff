@@ -41,7 +41,7 @@ gsudo config CacheMode Auto
 mv .\nvim $HOME\AppData\Local\
 ```
 ```pwsh
-mv.\wezterm .\fastfetch  $HOME\.config\
+mv.\wezterm .\fastfetch  .\starship.toml $HOME\.config\
 ```
 ```pwsh
 mv .\.gitconfig $HOME\
