@@ -36,7 +36,7 @@ return {
       dashboard.button("SPC ff", "󰱼  > Find File", ":Telescope find_files<CR>"),
       dashboard.button("ce", "  > Config Nvim", ":e " .. vim.fn.stdpath("config") .. "<CR>"),
       dashboard.button("ct", "  > Config WezTerm", ":e " .. vim.loop.os_homedir() .. "/.config/wezterm<CR>"),
-      dashboard.button("ct", "  > Config FastFetch", ":e " .. vim.loop.os_homedir() .. "/.config/fastfetch<CR>"),
+      dashboard.button("cf", "  > Config FastFetch", ":e " .. vim.loop.os_homedir() .. "/.config/fastfetch<CR>"),
       dashboard.button("cp", "  > Config Powershell", ":e " .. vim.loop.os_homedir() .. "/Documents/Powershell<CR>"),
       dashboard.button("cs", "  > Config Starship", ":e " .. vim.loop.os_homedir() .. "/.config/starship.toml<CR>"),
       dashboard.button("q", "  > Quit Nvim", ":qa<CR>"),

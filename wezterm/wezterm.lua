@@ -39,5 +39,97 @@ config.window_padding = {
   bottom = "15",
 }
 
+-- Keybinds
+config.leader = { key = "Space", mods = "CTRL", timeout_milliseconds = 10000 }
+config.keys = {
+  -- Tabs
+  { -- Making Tabs
+    key = "t",
+    mods = "LEADER",
+    action = wezterm.action{SpawnTab="CurrentPaneDomain"}
+  },
+  { -- Navagating Tabs
+    key = "n",
+    mods = "LEADER",
+    action = wezterm.action{ActivateTabRelative=1}
+  },
+  {
+    key = "p",
+    mods = "LEADER",
+    action = wezterm.action{ActivateTabRelative=-1}
+  },
+  { -- Kill Tabs
+    key = "x",
+    mods = "LEADER",
+    action = wezterm.action{CloseCurrentTab={confirm=false}}
+  },
+  -- Panes
+  { -- Making Panes
+    key = "o",
+    mods = "LEADER|SHIFT",
+    action = wezterm.action{SplitHorizontal={domain="CurrentPaneDomain"}}
+  },
+  {
+    key = "i",
+    mods = "LEADER|SHIFT",
+    action = wezterm.action{SplitVertical={domain="CurrentPaneDomain"}}
+  },
+  { -- Navagating Panes 
+    key = "h",
+    mods = "LEADER|SHIFT",
+    action = wezterm.action{ActivatePaneDirection="Left"}
+  },
+  {
+    key = "l",
+    mods = "LEADER|SHIFT",
+    action = wezterm.action{ActivatePaneDirection="Right"}
+  },
+  {
+    key = "k",
+    mods = "LEADER|SHIFT",
+    action = wezterm.action{ActivatePaneDirection="Up"}
+  },
+  {
+    key = "j",
+    mods = "LEADER|SHIFT",
+    action = wezterm.action{ActivatePaneDirection="Down"}
+  },
+  { -- Cycle through Pane 
+    key = "n",
+    mods = "LEADER|ALT",
+    action = wezterm.action{ActivatePaneDirection="Next"}
+  },
+  {
+    key = "p",
+    mods = "LEADER|ALT",
+    action = wezterm.action{ActivatePaneDirection="Prev"}
+  },
+  { -- Size the Pane
+    key = "h",
+    mods = "LEADER|ALT",
+    action = wezterm.action{AdjustPaneSize={"Left", 1}}
+  },
+  {
+    key = "l",
+    mods = "LEADER|ALT",
+    action = wezterm.action{AdjustPaneSize={"Right", 1}}
+  },
+  {
+    key = "k",
+    mods = "LEADER|ALT",
+    action = wezterm.action{AdjustPaneSize={"Up", 1}}
+  },
+  {
+    key = "j",
+    mods = "LEADER|ALT",
+    action = wezterm.action{AdjustPaneSize={"Down", 1}}
+  },
+  { -- Kill Panes
+    key = "x",
+    mods = "LEADER|SHIFT",
+    action = wezterm.action{CloseCurrentPane={confirm=false}}
+  },
+}
+
 -- and finally, return the configuration to wezterm
 return config

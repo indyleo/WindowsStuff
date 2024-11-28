@@ -29,22 +29,22 @@ function wq { exit }
 
 # Ls
 if (Test-CommandExists eza) {
-  function ezabase { eza --group-directories-first --color=auto @args }
+  function ezabase { eza --icons --group-directories-first --color=auto @args }
   Set-Alias -Name ls -Value ezabase -Force
 
-  function ezahidden { eza -a --group-directories-first --color=auto @args }
+  function ezahidden { eza --icons -a --group-directories-first --color=auto @args }
   Set-Alias -Name la -Value ezahidden -Force
 
-  function ezalist { eza -lF --group-directories-first --color=auto @args }
+  function ezalist { eza --icons -lF --group-directories-first --color=auto @args }
   Set-Alias -Name ll -Value ezalist -Force
 
-  function ezafav { eza -alF --group-directories-first --color=auto @args }
+  function ezafav { eza --icons -alF --group-directories-first --color=auto @args }
   Set-Alias -Name l -Value ezafav -Force
 
-  function ezatree { eza -a --tree --group-directories-first --color=auto @args }
+  function ezatree { eza --icons -a --tree --group-directories-first --color=auto @args }
   Set-Alias -Name lt -Value ezatree -Force
 
-  function ezarecurse { eza -aR --group-directories-first --color=auto @args }
+  function ezarecurse { eza --icons -aR --group-directories-first --color=auto @args }
   Set-Alias -Name lr -Value ezarecurse -Force
 
   function ezaonlyhidden { eza -a @args | rg "^\." }

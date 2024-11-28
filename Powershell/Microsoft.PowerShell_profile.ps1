@@ -38,6 +38,9 @@ $FUNCTION = "$HOME\Documents\Powershell\Sources\Functions.ps1"
 Import-Module -Name gsudoModule
 Import-Module -Name posh-git
 
+# Use vi keys to edit in terminal
+Set-PSReadlineOption -EditMode vi
+
 # Opt-out of telemetry before doing anything, only if PowerShell is run as admin
 if ([bool]([System.Security.Principal.WindowsIdentity]::GetCurrent()).IsSystem) {
   [System.Environment]::SetEnvironmentVariable('POWERSHELL_TELEMETRY_OPTOUT', 'true', [System.EnvironmentVariableTarget]::Machine)
@@ -101,4 +104,4 @@ if (Test-CommandExists zoxide ) {
 
 ### Starship Prompt Setup
 if ( Test-CommandExists starship ) { Invoke-Expression (&starship init powershell) }
-else { Write-Host "Statship prompt is not installed" }
+else { Write-Host "Starship prompt is not installed" }

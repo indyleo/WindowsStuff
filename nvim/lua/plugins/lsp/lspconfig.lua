@@ -78,6 +78,14 @@ return {
           },
         })
       end,
+      ["powershell_es"] = function()
+        lspconfig["powershell_es"].setup({
+          capabilities = capabilities,
+          filetypes = { "ps1" },
+          shell = "pwsh",
+          bundle_path = vim.fn.stdpath("data") .. "/mason/packages/powershell-editor-services",
+        })
+      end,
     })
   end,
 }

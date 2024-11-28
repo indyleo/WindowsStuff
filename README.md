@@ -23,6 +23,9 @@ Unblock-File $HOME\Documents\PowerShell\Sources\Gh-Completion.ps1
 ```pwsh
 Install-Module -Name posh-git -Repository PSGallery -Scope CurrentUser -Force
 ```
+```pwsh
+Install-Module PsReadline -Repository PSGallery -Scope CurrentUser -Force
+```
 
 - You should Use a [Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases/) My Personal Fav is Cascadia Code NF
 

@@ -21,6 +21,12 @@ vim.g.maplocalleader = " "
 
 ---- Non-Plugin ----
 
+-- Disable arrow keys
+keymap({ "n", "i", "v", "x", "t", "c" }, "<Up>", "<Nop>", opt)
+keymap({ "n", "i", "v", "x", "t", "c" }, "<Down>", "<Nop>", opt)
+keymap({ "n", "i", "v", "x", "t", "c" }, "<Left>", "<Nop>", opt)
+keymap({ "n", "i", "v", "x", "t", "c" }, "<Right>", "<Nop>", opt)
+
 -- Normal --
 
 -- Better window managment

@@ -39,6 +39,7 @@ return {
         -- Langs
         "pyright",
         "lua_ls",
+        "powershell_es",
       },
     })
 

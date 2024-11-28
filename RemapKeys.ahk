@@ -1,5 +1,5 @@
-;;; Varables
-USER = UR-USER-HERE
+﻿;;; Varables
+USER = UR-USER-HERE 
 
 ;;; Media/Audio Keys
 
@@ -20,18 +20,8 @@ USER = UR-USER-HERE
 
 ;;; Window Managment Keys
 
-; Switch To Previous Desktop
-LAlt & Left::
-Send, ^#{Left}
-return
-
-; Switch To Next Desktop
-LAlt & Right::
-Send, ^#{Right}
-return
-
 ; Close Focued Window
-!q::
+!q:: ; Alt + Q
 WinClose, A
 return
 
