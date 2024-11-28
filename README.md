@@ -4,7 +4,7 @@ This Is my ahk and powershell setups
 ## Reqired Steps to get working:
 - Run this: then restart
 ```pwsh
-Set-ExecutionPolicy RemoteSigned 
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 ```
 
 - Then do these: Do Profile First! then reload pwsh then do the alias and function files
