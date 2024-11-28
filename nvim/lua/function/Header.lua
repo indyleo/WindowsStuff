@@ -18,6 +18,7 @@ function InsertFileHeader()
     zsh = "#",
     fish = "#",
     sh = "#",
+    ps1 = "#",
     jsonc = "#",
     yaml = "#",
     toml = "#",
