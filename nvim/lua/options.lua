@@ -52,10 +52,10 @@ opt.wrap = false
 opt.scrolloff = 8
 opt.sidescrolloff = 8
 opt.fillchars = { eob = " ", foldopen = "▾", foldclose = "▸" }
-opt.shortmess:append "c"
-opt.whichwrap:append "<,>,[,],h,l"
-opt.iskeyword:append "-"
-opt.formatoptions:remove { "c", "r", "o" }
+opt.shortmess:append("c")
+opt.whichwrap:append("<,>,[,],h,l")
+opt.iskeyword:append("-")
+opt.formatoptions:remove({ "c", "r", "o" })
 opt.linebreak = true
 opt.spelllang = "en_us"
 opt.spell = false
@@ -66,11 +66,11 @@ opt.foldenable = true
 
 -- Neovide Opts
 if vim.g.neovide then
-  vim.g.neovide_padding_top = 15
-  vim.g.neovide_padding_bottom = 15
-  vim.g.neovide_padding_right = 15
-  vim.g.neovide_padding_left = 15
-  vim.g.neovide_fullscreen = true
-  vim.g.neovide_cursor_vfx_mode = "pixiedust"
-  vim.cmd("cd $HOME")
+	vim.g.neovide_padding_top = 15
+	vim.g.neovide_padding_bottom = 15
+	vim.g.neovide_padding_right = 15
+	vim.g.neovide_padding_left = 15
+	vim.g.neovide_fullscreen = true
+	vim.g.neovide_cursor_vfx_mode = "pixiedust"
+	vim.cmd("cd $HOME")
 end

@@ -2,7 +2,7 @@
 local keymap = vim.keymap.set
 -- Keymap option
 local function opts(desc)
-  return { noremap = true, silent = true, desc = desc }
+	return { noremap = true, silent = true, desc = desc }
 end
 local opt = { noremap = true, silent = true }
 
@@ -56,25 +56,39 @@ keymap("n", "<leader>hl", ":nohlsearch<CR>", opts("Clear highlights"))
 keymap("v", "p", "P", opt)
 
 -- Toggle spellcheck off and on
-keymap("n", "<leader>sp", function() ToggleSpellCheck() end, opts("Toggles spell check"))
+keymap("n", "<leader>sp", function()
+	ToggleSpellCheck()
+end, opts("Toggles spell check"))
 
 -- Source the main conf file and current file
-keymap("n", "<leader>so", function() SourceConf(Main) end, opts("Source init.lua"))
-keymap("n", "<leader>se", function() SourceConf(Current) end, opts("Source current file in buffer"))
+keymap("n", "<leader>so", function()
+	SourceConf(Main)
+end, opts("Source init.lua"))
+keymap("n", "<leader>se", function()
+	SourceConf(Current)
+end, opts("Source current file in buffer"))
 
 -- Increment/Decrement numbers
 keymap("n", "a", "<C-a>", opt)
 keymap("n", "z", "<C-x>", opt)
 
 -- Number Options
-keymap("n", "<C-n>", function() ToggleLineNumbers() end, opt)
+keymap("n", "<C-n>", function()
+	ToggleLineNumbers()
+end, opt)
 
 -- Http Server
-keymap("n", "<leader>hn", function() HttpServer(Start) end, opts("Start http server"))
-keymap("n", "<leader>hf", function() HttpServer(Stop) end, opts("Stop http server"))
+keymap("n", "<leader>hn", function()
+	HttpServer(Start)
+end, opts("Start http server"))
+keymap("n", "<leader>hf", function()
+	HttpServer(Stop)
+end, opts("Stop http server"))
 
 -- Insert file header
-keymap("n", "<leader>hi", function() InsertFileHeader() end, opts("Insert a file header"))
+keymap("n", "<leader>hi", function()
+	InsertFileHeader()
+end, opts("Insert a file header"))
 
 -- Insert --
 
@@ -94,8 +108,12 @@ keymap("v", "K", ":m '<-2<CR>gv=gv", opt)
 -- Normal mode --
 
 -- Todo Comments
-keymap("n", "<C-d>", function() require("todo-comments").jump_next() end, opt)
-keymap("n", "<C-c>", function() require("todo-comments").jump_prev() end, opt)
+keymap("n", "<C-d>", function()
+	require("todo-comments").jump_next()
+end, opt)
+keymap("n", "<C-c>", function()
+	require("todo-comments").jump_prev()
+end, opt)
 
 -- Trouble
 keymap("n", "<leader>xw", ":Trouble diagnostics toggle<CR>", opts("Open trouble workspace diagnostics"))
@@ -110,17 +128,35 @@ keymap("n", "<leader>ef", ":NvimTreeFindFileToggle<CR>", opts("Toggle file explo
 keymap("n", "<leader>ec", ":NvimTreeCollapse<CR>", opts("Collapse file explorer"))
 keymap("n", "<leader>er", ":NvimTreeRefresh<CR>", opts("Refresh file explorer"))
 keymap("n", "<leader>eb", ":NvimTreeClipboard<CR>", opts("Show whats in Nvim-tree clipboard"))
-keymap("n", "<leader>cn", function() require('nvim-tree.api').tree.change_root_to_node() end, opts("Cd into a child directory"))
-keymap("n", "<leader>cp", function() require('nvim-tree.api').tree.change_root_to_parent() end, opts("Cd into a parent directory"))
+keymap("n", "<leader>cn", function()
+	require("nvim-tree.api").tree.change_root_to_node()
+end, opts("Cd into a child directory"))
+keymap("n", "<leader>cp", function()
+	require("nvim-tree.api").tree.change_root_to_parent()
+end, opts("Cd into a parent directory"))
 
 -- Harpoon
-keymap("n", "<leader>a", function() require("harpoon"):list():add() end, opts("Marks a file"))
-keymap("n", "<C-e>", function() require("harpoon").ui:toggle_quick_menu(require("harpoon"):list()) end, opts("Opens Harpoon Menu"))
-keymap("n", "<leader>1", function() require("harpoon"):list():select(1) end, opts("Open file 1"))
-keymap("n", "<leader>2", function() require("harpoon"):list():select(2) end, opts("Open file 2"))
-keymap("n", "<leader>3", function() require("harpoon"):list():select(3) end, opts("Open file 3"))
-keymap("n", "<leader>4", function() require("harpoon"):list():select(4) end, opts("Open file 4"))
-keymap("n", "<leader>5", function() require("harpoon"):list():select(5) end, opts("Open file 5"))
+keymap("n", "<leader>a", function()
+	require("harpoon"):list():add()
+end, opts("Marks a file"))
+keymap("n", "<C-e>", function()
+	require("harpoon").ui:toggle_quick_menu(require("harpoon"):list())
+end, opts("Opens Harpoon Menu"))
+keymap("n", "<leader>1", function()
+	require("harpoon"):list():select(1)
+end, opts("Open file 1"))
+keymap("n", "<leader>2", function()
+	require("harpoon"):list():select(2)
+end, opts("Open file 2"))
+keymap("n", "<leader>3", function()
+	require("harpoon"):list():select(3)
+end, opts("Open file 3"))
+keymap("n", "<leader>4", function()
+	require("harpoon"):list():select(4)
+end, opts("Open file 4"))
+keymap("n", "<leader>5", function()
+	require("harpoon"):list():select(5)
+end, opts("Open file 5"))
 
 -- ToggleTerm
 keymap("n", "<C-q>", ":ToggleTerm<CR>", opt)
@@ -133,25 +169,44 @@ keymap("n", "<C-g>", ":LazyGit<CR>", opt)
 
 -- Comment
 keymap("n", "<leader>/", ":lua require('Comment.api').toggle.linewise.current()<CR>", opts("Comments line"))
-keymap({ "x", "v" }, "<leader>/", "<esc><:lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>", opts("Comments multi-line"))
+keymap(
+	{ "x", "v" },
+	"<leader>/",
+	"<esc><:lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
+	opts("Comments multi-line")
+)
 
 -- Flash
-keymap({ "n", "x", "o" }, "<leader>jj", function() require("flash").jump() end, opts("Flash jump"))
-keymap({ "n", "x", "o" }, "<leader>jt", function() require("flash").treesitter() end, opts("Flash treesiter jump"))
-keymap("o", "<leader>jr", function() require("flash").remote() end, opts("Flash remote"))
-keymap({ "x", "o" }, "<leader>jR", function() require("flash").treesitter_search() end, opts("Flash remote"))
-keymap("c", "<leader>js", function() require("flash").toggle() end, opts("Flash toggle search"))
+keymap({ "n", "x", "o" }, "<leader>jj", function()
+	require("flash").jump()
+end, opts("Flash jump"))
+keymap({ "n", "x", "o" }, "<leader>jt", function()
+	require("flash").treesitter()
+end, opts("Flash treesiter jump"))
+keymap("o", "<leader>jr", function()
+	require("flash").remote()
+end, opts("Flash remote"))
+keymap({ "x", "o" }, "<leader>jR", function()
+	require("flash").treesitter_search()
+end, opts("Flash remote"))
+keymap("c", "<leader>js", function()
+	require("flash").toggle()
+end, opts("Flash toggle search"))
 
 -- Nvim Ufo
-keymap("n", "<leader>zr", function() require("ufo").openAllFolds() end, opts("Opens all folds"))
-keymap("n", "<leader>zm", function() require("ufo").closeAllFolds() end, opts("Closes all folds"))
+keymap("n", "<leader>zr", function()
+	require("ufo").openAllFolds()
+end, opts("Opens all folds"))
+keymap("n", "<leader>zm", function()
+	require("ufo").closeAllFolds()
+end, opts("Closes all folds"))
 keymap("n", "<leader>zf", ":foldopen<CR>", opts("Opens folds"))
 keymap("n", "<leader>zc", ":foldclose<CR>", opts("Closes folds"))
 keymap("n", "<leader>zk", function()
-  local winid = require("ufo").peekFoldedLinesUnderCursor()
-  if not winid then
-    vim.lsp.buf.hover()
-  end
+	local winid = require("ufo").peekFoldedLinesUnderCursor()
+	if not winid then
+		vim.lsp.buf.hover()
+	end
 end, opts("Peek closed folds"))
 
 -- Telescope
@@ -164,35 +219,62 @@ keymap("n", "<leader>fu", ":Telescope undo<CR>", opts("Opens undo managment"))
 keymap("n", "<leader>fn", ":Telescope notify<CR>", opts("Opens notification histroy"))
 keymap("n", "<leader>fh", ":Telescope help_tags<CR>", opts("Fuzzy find help pages"))
 
+-- Formatter and Linters
+keymap("n", "<leader>ml", function()
+	require("lint").try_lint()
+end, opts("Trigger linting for current file"))
+keymap({ "n", "v" }, "<leader>mf", function()
+	require("conform").format({
+		lsp_fallback = true,
+		async = false,
+		timeout_ms = 1000,
+	})
+end, opts("Format file or range (in visual mode)"))
+
 -- Lsp
 vim.api.nvim_create_autocmd("LspAttach", {
-  group = vim.api.nvim_create_augroup("LspKeymaps", { clear = true }),
-  callback = function(args)
-    local bufnr = args.buf
-    local lspopts = function(desc)
-      return { desc = desc, buffer = bufnr, noremap = true, silent = true }
-    end
+	group = vim.api.nvim_create_augroup("LspKeymaps", { clear = true }),
+	callback = function(args)
+		local bufnr = args.buf
+		local lspopts = function(desc)
+			return { desc = desc, buffer = bufnr, noremap = true, silent = true }
+		end
 
-    -- Keymaps for LSP
-    vim.keymap.set("n", "gR", ":Telescope lsp_references<CR>", lspopts("Show definition, references"))
-    vim.keymap.set("n", "gD", function() vim.lsp.buf.declaration() end, lspopts("Go to declaration"))
-    vim.keymap.set("n", "gd", ":Telescope lsp_definitions<CR>", lspopts("Show LSP definitions"))
-    vim.keymap.set("n", "gi", ":Telescope lsp_implementations<CR>", lspopts("Show LSP implementations"))
-    vim.keymap.set("n", "gt", ":Telescope lsp_type_definitions<CR>", lspopts("Show LSP type definitions"))
-    vim.keymap.set("n", "gf", function() vim.lsp.buf.format() end, lspopts("Format file with LSP"))
-    vim.keymap.set({ "n", "v" }, "<leader>ca", function() vim.lsp.buf.code_action() end, lspopts("See available code actions; applies to selection in visual mode"))
-    vim.keymap.set("n", "<leader>rn", function() vim.lsp.buf.rename() end, lspopts("Smart rename"))
-    vim.keymap.set("n", "<leader>D", ":Telescope diagnostics bufnr=0<CR>", lspopts("Show diagnostics for file"))
-    vim.keymap.set("n", "<leader>d", function() vim.diagnostic.open_float() end, lspopts("Show diagnostics for line"))
-    vim.keymap.set("n", "[d", function() vim.diagnostic.goto_prev() end, lspopts("Jump to previous diagnostic in buffer"))
-    vim.keymap.set("n", "]d", function() vim.diagnostic.goto_next() end, lspopts("Jump to next diagnostic in buffer"))
-    vim.keymap.set("n", "gK", function() vim.lsp.buf.hover() end, lspopts("Show documentation for what is under cursor"))
-    vim.keymap.set("n", "<leader>rs", ":LspRestart<CR>", lspopts("Restart LSP if necessary"))
+		-- Keymaps for LSP
+		vim.keymap.set("n", "gR", ":Telescope lsp_references<CR>", lspopts("Show definition, references"))
+		vim.keymap.set("n", "gD", function()
+			vim.lsp.buf.declaration()
+		end, lspopts("Go to declaration"))
+		vim.keymap.set("n", "gd", ":Telescope lsp_definitions<CR>", lspopts("Show LSP definitions"))
+		vim.keymap.set("n", "gi", ":Telescope lsp_implementations<CR>", lspopts("Show LSP implementations"))
+		vim.keymap.set("n", "gt", ":Telescope lsp_type_definitions<CR>", lspopts("Show LSP type definitions"))
+		vim.keymap.set({ "n", "v" }, "<leader>ca", function()
+			vim.lsp.buf.code_action()
+		end, lspopts("See available code actions; applies to selection in visual mode"))
+		vim.keymap.set("n", "<leader>rn", function()
+			vim.lsp.buf.rename()
+		end, lspopts("Smart rename"))
+		vim.keymap.set("n", "<leader>D", ":Telescope diagnostics bufnr=0<CR>", lspopts("Show diagnostics for file"))
+		vim.keymap.set("n", "<leader>d", function()
+			vim.diagnostic.open_float()
+		end, lspopts("Show diagnostics for line"))
+		vim.keymap.set("n", "[d", function()
+			vim.diagnostic.goto_prev()
+		end, lspopts("Jump to previous diagnostic in buffer"))
+		vim.keymap.set("n", "]d", function()
+			vim.diagnostic.goto_next()
+		end, lspopts("Jump to next diagnostic in buffer"))
+		vim.keymap.set("n", "gK", function()
+			vim.lsp.buf.hover()
+		end, lspopts("Show documentation for what is under cursor"))
+		vim.keymap.set("n", "<leader>rs", ":LspRestart<CR>", lspopts("Restart LSP if necessary"))
 
-    -- Showing lsp is attached current file
-    vim.notify("Lsp Attached to: " .. vim.fn.expand("%:t"), vim.log.levels.INFO)
-  end,
+		-- Showing lsp is attached current file
+		vim.notify("Lsp Attached to: " .. vim.fn.expand("%:t"), vim.log.levels.INFO)
+	end,
 })
 
 -- Zen Mode
-keymap("n", "<leader>zz", function() ToggleZen() end, opts("Toggle zen mode"))
+keymap("n", "<leader>zz", function()
+	ToggleZen()
+end, opts("Toggle zen mode"))
