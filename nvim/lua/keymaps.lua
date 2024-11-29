@@ -11,13 +11,24 @@ keymap("", "<Space>", "<Nop>", opt)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- Modes
---   normal_mode = "n",
---   insert_mode = "i",
---   visual_mode = "v",
---   visual_block_mode = "x",
---   term_mode = "t",
---   command_mode = "c",
+-- Modes:
+--   normal_mode       = "n"  -- Normal mode
+--   insert_mode       = "i"  -- Insert mode
+--   visual_mode       = "v"  -- Visual mode
+--   visual_block_mode = "x"  -- Visual block mode
+--   select_mode       = "s"  -- Select mode
+--   term_mode         = "t"  -- Terminal mode
+--   command_mode      = "c"  -- Command-line mode
+--   operator_pending  = "o"  -- Operator-pending mode
+--   replace_mode      = "R"  -- Replace mode
+--   virtual_replace   = "gR" -- Virtual Replace mode
+--   ex_mode           = "!"  -- Ex mode
+--   hit-enter         = "r"  -- Hit-enter prompt
+--   confirm_mode      = "cv" -- Confirm mode
+--   more_mode         = "rm" -- More prompt
+--   shell_mode        = "!"  -- Shell or external command execution
+--   lang_arg_mode     = "l"  -- Language-specific argument completion
+--   lang_map_mode     = "L"  -- Language-specific mappings
 
 ---- Non-Plugin ----
 
@@ -57,9 +68,6 @@ keymap("n", "z", "<C-x>", opt)
 
 -- Number Options
 keymap("n", "<C-n>", function() ToggleLineNumbers() end, opt)
-
--- Format File
-keymap("n", "<C-s>", "gg=G", opt)
 
 -- Http Server
 keymap("n", "<leader>hn", function() HttpServer(Start) end, opts("Start http server"))
@@ -127,6 +135,13 @@ keymap("n", "<C-g>", ":LazyGit<CR>", opt)
 keymap("n", "<leader>/", ":lua require('Comment.api').toggle.linewise.current()<CR>", opts("Comments line"))
 keymap({ "x", "v" }, "<leader>/", "<esc><:lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>", opts("Comments multi-line"))
 
+-- Flash
+keymap({ "n", "x", "o" }, "<leader>jj", function() require("flash").jump() end, opts("Flash jump"))
+keymap({ "n", "x", "o" }, "<leader>jt", function() require("flash").treesitter() end, opts("Flash treesiter jump"))
+keymap("o", "<leader>jr", function() require("flash").remote() end, opts("Flash remote"))
+keymap({ "x", "o" }, "<leader>jR", function() require("flash").treesitter_search() end, opts("Flash remote"))
+keymap("c", "<leader>js", function() require("flash").toggle() end, opts("Flash toggle search"))
+
 -- Nvim Ufo
 keymap("n", "<leader>zr", function() require("ufo").openAllFolds() end, opts("Opens all folds"))
 keymap("n", "<leader>zm", function() require("ufo").closeAllFolds() end, opts("Closes all folds"))
@@ -150,20 +165,34 @@ keymap("n", "<leader>fn", ":Telescope notify<CR>", opts("Opens notification hist
 keymap("n", "<leader>fh", ":Telescope help_tags<CR>", opts("Fuzzy find help pages"))
 
 -- Lsp
-keymap("n", "gR", ":Telescope lsp_references<CR>", opts("Show definition, references"))
-keymap("n", "gD", function() vim.lsp.buf.declaration() end, opts("Go to declaration"))
-keymap("n", "gd", ":Telescope lsp_definitions<CR>", opts("Show lsp definitions"))
-keymap("n", "gi", ":Telescope lsp_implementations<CR>", opts("Show lsp implementations"))
-keymap("n", "gt", ":Telescope lsp_type_definitions<CR>", opts("Show lsp type definitions"))
-keymap("n", "gf", function() vim.lsp.buf.format() end, opts("Formats file with lsp"))
-keymap({ "n", "v" }, "<leader>ca", function() vim.lsp.buf.code_action() end, opts("See available code actions, in visual mode will apply to selection"))
-keymap("n", "<leader>rn", function() vim.lsp.buf.rename() end, opts("Smart rename"))
-keymap("n", "<leader>D", ":Telescope diagnostics bufnr=0<CR>", opts("Show  diagnostics for file"))
-keymap("n", "<leader>d", function() vim.diagnostic.open_float() end, opts("Show diagnostics for line"))
-keymap("n", "[d", function() vim.diagnostic.goto_prev() end, opts("Jump to previous diagnostic in buffer"))
-keymap("n", "]d", function() vim.diagnostic.goto_next() end, opts("Jump to next diagnostic in buffer"))
-keymap("n", "gK", function() vim.lsp.buf.hover() end, opts("Show documentation for what is under cursor"))
-keymap("n", "<leader>rs", ":LspRestart<CR>", opts("Mapping to restart lsp if necessary"))
+vim.api.nvim_create_autocmd("LspAttach", {
+  group = vim.api.nvim_create_augroup("LspKeymaps", { clear = true }),
+  callback = function(args)
+    local bufnr = args.buf
+    local lspopts = function(desc)
+      return { desc = desc, buffer = bufnr, noremap = true, silent = true }
+    end
+
+    -- Keymaps for LSP
+    vim.keymap.set("n", "gR", ":Telescope lsp_references<CR>", lspopts("Show definition, references"))
+    vim.keymap.set("n", "gD", function() vim.lsp.buf.declaration() end, lspopts("Go to declaration"))
+    vim.keymap.set("n", "gd", ":Telescope lsp_definitions<CR>", lspopts("Show LSP definitions"))
+    vim.keymap.set("n", "gi", ":Telescope lsp_implementations<CR>", lspopts("Show LSP implementations"))
+    vim.keymap.set("n", "gt", ":Telescope lsp_type_definitions<CR>", lspopts("Show LSP type definitions"))
+    vim.keymap.set("n", "gf", function() vim.lsp.buf.format() end, lspopts("Format file with LSP"))
+    vim.keymap.set({ "n", "v" }, "<leader>ca", function() vim.lsp.buf.code_action() end, lspopts("See available code actions; applies to selection in visual mode"))
+    vim.keymap.set("n", "<leader>rn", function() vim.lsp.buf.rename() end, lspopts("Smart rename"))
+    vim.keymap.set("n", "<leader>D", ":Telescope diagnostics bufnr=0<CR>", lspopts("Show diagnostics for file"))
+    vim.keymap.set("n", "<leader>d", function() vim.diagnostic.open_float() end, lspopts("Show diagnostics for line"))
+    vim.keymap.set("n", "[d", function() vim.diagnostic.goto_prev() end, lspopts("Jump to previous diagnostic in buffer"))
+    vim.keymap.set("n", "]d", function() vim.diagnostic.goto_next() end, lspopts("Jump to next diagnostic in buffer"))
+    vim.keymap.set("n", "gK", function() vim.lsp.buf.hover() end, lspopts("Show documentation for what is under cursor"))
+    vim.keymap.set("n", "<leader>rs", ":LspRestart<CR>", lspopts("Restart LSP if necessary"))
+
+    -- Showing lsp is attached current file
+    vim.notify("Lsp Attached to: " .. vim.fn.expand("%:t"), vim.log.levels.INFO)
+  end,
+})
 
 -- Zen Mode
 keymap("n", "<leader>zz", function() ToggleZen() end, opts("Toggle zen mode"))

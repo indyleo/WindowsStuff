@@ -51,16 +51,16 @@ opt.signcolumn = "yes"
 opt.wrap = false
 opt.scrolloff = 8
 opt.sidescrolloff = 8
-opt.fillchars = { eob = ' ', foldopen = '▾', foldclose = '▸' }
+opt.fillchars = { eob = " ", foldopen = "▾", foldclose = "▸" }
 opt.shortmess:append "c"
 opt.whichwrap:append "<,>,[,],h,l"
 opt.iskeyword:append "-"
 opt.formatoptions:remove { "c", "r", "o" }
 opt.linebreak = true
-opt.spelllang = 'en_us'
+opt.spelllang = "en_us"
 opt.spell = false
-opt.foldcolumn = '1' -- '0' is not bad
-opt.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+opt.foldcolumn = "1"
+opt.foldlevel = 99
 opt.foldlevelstart = 99
 opt.foldenable = true
 
