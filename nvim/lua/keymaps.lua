@@ -155,6 +155,7 @@ keymap("n", "gD", function() vim.lsp.buf.declaration() end, opts("Go to declarat
 keymap("n", "gd", ":Telescope lsp_definitions<CR>", opts("Show lsp definitions"))
 keymap("n", "gi", ":Telescope lsp_implementations<CR>", opts("Show lsp implementations"))
 keymap("n", "gt", ":Telescope lsp_type_definitions<CR>", opts("Show lsp type definitions"))
+keymap("n", "gf", function() vim.lsp.buf.format() end, opts("Formats file with lsp"))
 keymap({ "n", "v" }, "<leader>ca", function() vim.lsp.buf.code_action() end, opts("See available code actions, in visual mode will apply to selection"))
 keymap("n", "<leader>rn", function() vim.lsp.buf.rename() end, opts("Smart rename"))
 keymap("n", "<leader>D", ":Telescope diagnostics bufnr=0<CR>", opts("Show  diagnostics for file"))
