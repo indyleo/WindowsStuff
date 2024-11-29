@@ -69,6 +69,15 @@ if (Test-CommandExists fd) {
   Write-Host "Fd is not installed."
 }
 
+# Cd
+if (Test-CommandExists zoxide) {
+  function zcd { __zoxide_z @args }
+  Set-Alias -Name cd -Value zcd -Option AllScope -Scope Global -Force
+
+  function zicd { __zoxide_zi @args }
+  Set-Alias -Name ci -Value zicd -Option AllScope -Scope Global -Force
+}
+
 ### Git Aliases
 function stat { git status }
 function addup { git add -u }

@@ -97,11 +97,14 @@ if (Test-Path "$HOME\Documents\PowerShell\Sources\Wezterm-Completion.ps1") {
 
 # Zoxide Check
 if (Test-CommandExists zoxide ) {
-  Invoke-Expression (& { (zoxide init powershell --cmd cd | Out-String) })
+  Invoke-Expression (& { (zoxide init powershell --no-cmd | Out-String) })
 } else {
   Write-Host "Zoxide is not installed."
 }
 
 ### Starship Prompt Setup
-if ( Test-CommandExists starship ) { Invoke-Expression (&starship init powershell) }
-else { Write-Host "Starship prompt is not installed" }
+if ( Test-CommandExists starship ) { 
+  Invoke-Expression (&starship init powershell) 
+} else { 
+  Write-Host "Starship prompt is not installed" 
+}
