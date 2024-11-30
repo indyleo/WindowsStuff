@@ -1,117 +1,80 @@
-﻿;;; Varables
-USER = UR-USER-HERE 
+﻿#Requires AutoHotkey v2.0
+#SingleInstance Force
+
+;;; Variables
+USER := "UR-USER-HERE"
 
 ;;; Media/Audio Keys
 
 ; Play/Pause
-^!p::Send {Media_Play_Pause}
+^!p::Send("{Media_Play_Pause}")
 
 ; Next Track
-^!n::Send {Media_Next}
+^!n::Send("{Media_Next}")
 
 ; Previous Track
-^!b::Send {Media_Prev}
+^!b::Send("{Media_Prev}")
 
 ; Volume Up
-^!Up::Send {Volume_Up}
+^!Up::Send("{Volume_Up}")
 
 ; Volume Down
-^!Down::Send {Volume_Down}
+^!Down::Send("{Volume_Down}")
 
-;;; Window Managment Keys
+;;; Window Management Keys
 
-; Close Focued Window
-!q:: ; Alt + Q
-WinClose, A
-return
+; Close Focused Window
+^!q::WinClose("A")
 
 ;;; App Opening Keys
 
 ; Hotkey to open Floorp
-!b:: 
-Run, C:\Program Files\Ablaze Floorp\floorp.exe
-Return
-
+!b::Run("C:\Program Files\Ablaze Floorp\floorp.exe")
 
 ; Hotkey to open Vesktop (Discord)
-!d:: 
-Run, C:\Users\%USER%\AppData\Local\vesktop\Vesktop.exe
-Return
+!d::Run("C:\Users\" . USER . "\AppData\Local\vesktop\Vesktop.exe")
 
 ; Hotkey to open foobar2000
-!m:: 
-Run, C:\Program Files\foobar2000\foobar2000.exe
-Return
+!m::Run("C:\Program Files\foobar2000\foobar2000.exe")
 
 ; Hotkey to open Terminal
-!Enter:: 
-Run, C:\Program Files\WezTerm\wezterm-gui.exe
-Return
+!Enter::Run("C:\Program Files\WezTerm\wezterm-gui.exe")
 
-; Hotkey to open Terminal as admin
-!^Enter:: 
+; Hotkey to open Terminal as Admin
+^!Enter::
 {
-  Run *RunAs "C:\Program Files\WezTerm\wezterm-gui.exe"
+    Run("*RunAs C:\Program Files\WezTerm\wezterm-gui.exe")
 }
-Return
 
 ; Hotkey to open File Explorer
-!f:: 
-Run, explorer.exe
-Return
+!f::Run("explorer.exe")
 
 ; Open Neovide (Editor)
-!e:: 
-Run, C:\Users\%USER%\scoop\apps\neovide\current\neovide.exe
-Return
+!e::Run("C:\Users\" . USER . "\scoop\apps\neovide\current\neovide.exe")
 
-; Hotkey to open Control Panel, or Setting
-!s::
-KeyWait, s, D ; Wait for the S key to be pressed down
-KeyWait, s ; Wait for the S key to be released
-Input, SingleKey, L1 ; Wait for the next key press
-if (SingleKey = "c") {
-  Run, control.exe ; Open Control Panel
+;;; A Key to Different Key
+
+; Caps -> Esc & Esc -> Ctrl + V (only if Neovide/Vim is focused)
+#HotIf WinActive("ahk_exe Neovide.exe") || WinActive("ahk_class org.wezfurlong.wezterm")
+{
+    Capslock::Send("{Esc}")
+    Esc::Send("^v")
+
 }
-else if (SingleKey = "s") {
-  Run, ms-settings: ; Open Settings app
-}
-else {
-  MsgBox, Invalid Key. Press C for Control Panel or S for Settings.
-}
-Return
-
-;;; A key to different key
-
-; Caps -> Esc & Esc -> Caps (only if neovide/vim is focused)
-#IfWinActive ahk_exe Neovide.exe
-Capslock::Esc
-Esc::Capslock
-#IfWinActive
-
-#IfWinActive, ahk_class org.wezfurlong.wezterm
-IfWinExist, PowerShell
-Capslock::Esc
-Esc::Capslock
-#If
+#HotIf
 
 ;;; Debug
 
-; Just Win Title 
-F1::
-WinGetTitle, Title, A
-MsgBox, Window Title: %Title%
-Return
+; Display Active Window Title
+F1::MsgBox("Window Title: " . WinGetTitle("A"))
 
-; Just Win Class 
-F2::
-WinGetClass, Class, A
-MsgBox, Window Class: %Class%
-Return
+; Display Active Window Class
+F2::MsgBox("Window Class: " . WinGetClass("A"))
 
-; Win Class & Title
+; Display Active Window Class and Title
 F3::
-WinGetActiveTitle, Title
-WinGetClass, Class, A
-MsgBox, Active Window Title: %Title%`nActive Window Class: %Class%
-return
+{
+    Title := WinGetTitle("A")
+    Class := WinGetClass("A")
+    MsgBox("Active Window Title: " . Title . "`nActive Window Class: " . Class)
+}
