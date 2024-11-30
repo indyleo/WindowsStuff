@@ -168,7 +168,9 @@ keymap("n", "<C-z>", ":Alpha<CR>", opt)
 keymap("n", "<C-g>", ":LazyGit<CR>", opt)
 
 -- Comment
-keymap("n", "<leader>/", ":lua require('Comment.api').toggle.linewise.current()<CR>", opts("Comments line"))
+keymap("n", "<leader>/", function()
+	require("Comment.api").toggle.linewise.current()
+end, opts("Comments line"))
 keymap(
 	{ "x", "v" },
 	"<leader>/",
