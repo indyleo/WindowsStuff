@@ -12,6 +12,7 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 		local current_filename = vim.fn.expand("%:t")
 		local config_path = normalize_path(vim.fn.stdpath("config") .. "/lua")
 		local plugins_path = normalize_path(vim.fn.stdpath("config") .. "/lua/plugins")
+		local wezterm_config_path = normalize_path(vim.fn.expand("~") .. "/.config/wezterm")
 
 		-- List of files to exclude
 		local excluded_files = { "autocommand.lua", "options.lua" }
@@ -24,13 +25,18 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 			end
 		end
 
-		-- Debugging: Print normalized paths
-		vim.notify("Normalized Current File: " .. current_file, vim.log.levels.DEBUG)
-		vim.notify("Normalized Config Path: " .. config_path, vim.log.levels.DEBUG)
-		vim.notify("Normalized Plugins Path: " .. plugins_path, vim.log.levels.DEBUG)
+		-- Check if the current file is within the Neovim config directory and not in plugins folder
+		if
+			current_file:sub(1, #config_path) == config_path
+			and current_file:sub(1, #plugins_path) ~= plugins_path
+			and current_file:sub(1, #wezterm_config_path) ~= wezterm_config_path
+		then
+			-- Debugging: Print normalized paths (only if not in plugins folder or wezterm config)
+			vim.notify("Normalized Current File: " .. current_file, vim.log.levels.DEBUG)
+			vim.notify("Normalized Config Path: " .. config_path, vim.log.levels.DEBUG)
+			vim.notify("Normalized Plugins Path: " .. plugins_path, vim.log.levels.DEBUG)
+			vim.notify("Normalized WezTerm Config Path: " .. wezterm_config_path, vim.log.levels.DEBUG)
 
-		-- Check if the current file is within the Neovim config directory
-		if current_file:sub(1, #config_path) == config_path and current_file:sub(1, #plugins_path) ~= plugins_path then
 			-- Try to source the file
 			local ok, err = pcall(function()
 				vim.cmd.source(current_file)
@@ -40,8 +46,14 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 			else
 				vim.notify("Failed to Reloaded: " .. err, vim.log.levels.WARN)
 			end
+		elseif
+			current_file:sub(1, #plugins_path) == plugins_path
+			or current_file:sub(1, #wezterm_config_path) == wezterm_config_path
+		then
+			-- Don't print anything if in plugins folder or WezTerm config directory
+			return
 		else
-			vim.notify("Not in Neovim configuration directory or in plugins folder.", vim.log.levels.WARN)
+			vim.notify("Not in Neovim configuration directory.", vim.log.levels.WARN)
 		end
 	end,
 })
