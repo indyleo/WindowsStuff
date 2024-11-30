@@ -24,7 +24,7 @@ USER := "UR-USER-HERE"
 ;;; Window Management Keys
 
 ; Close Focused Window
-^!q::WinClose("A")
+!q::WinClose("A")
 
 ;;; App Opening Keys
 
