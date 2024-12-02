@@ -29,6 +29,7 @@ return {
 				-- Text
 				"jsonls",
 				"yamlls",
+				"taplo",
 				"ltex",
 
 				-- Web

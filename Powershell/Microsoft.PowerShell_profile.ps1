@@ -164,9 +164,20 @@ if (Test-CommandExists zoxide )
 
 ### Starship Prompt Setup
 if ( Test-CommandExists starship )
-{ 
-  Invoke-Expression (&starship init powershell) 
-} else
-{ 
-  Write-Host "Starship prompt is not installed" 
+{
+  function Invoke-Starship-PreCommand
+  {
+    if ($global:profile_initialized -ne $true)
+    {
+      $global:profile_initialized = $true
+      Initialize-Profile
+    }
+  }
+  Invoke-Expression (&starship init powershell)
 }
+function Invoke-Starship-TransientFunction
+{
+  "$(&starship prompt --profile transient)"
+  Write-Host ""
+}
+Enable-TransientPrompt
