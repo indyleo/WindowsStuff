@@ -43,12 +43,12 @@ if (-not (Test-IsRunningInNeovim))
 $VISUAL = if (Test-CommandExists neovide)
 { 'neovide' 
 } else
-{ Write-Host "Neovide ias not installed." 
+{ Write-Host "Neovide is not installed." 
 }
 $EDITOR = if (Test-CommandExists nvim)
 { 'nvim' 
 } else
-{ Write-Host "Neovim ias not installed." 
+{ Write-Host "Neovim is not installed." 
 }
 $AlIAS = "$HOME\Documents\Powershell\Sources\Aliases.ps1"
 $FUNCTION = "$HOME\Documents\Powershell\Sources\Functions.ps1"

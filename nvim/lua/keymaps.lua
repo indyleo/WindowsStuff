@@ -221,6 +221,12 @@ keymap("n", "<leader>fu", ":Telescope undo<CR>", opts("Opens undo managment"))
 keymap("n", "<leader>fn", ":Telescope notify<CR>", opts("Opens notification histroy"))
 keymap("n", "<leader>fh", ":Telescope help_tags<CR>", opts("Fuzzy find help pages"))
 
+-- Aerial
+keymap("n", "<leader>tt", ":AerialToggle! right<CR>", opts("Aerial Toggle Tree Tags"))
+keymap("n", "<leader>tu", ":AerialNavToggle<CR>", opts("Aerial Toggle Nav Tags"))
+keymap("n", "<leader>tp", ":AerialPrev<CR>", opts("Aerial Prev Tag"))
+keymap("n", "<leader>tn", ":AerialNext<CR>", opts("Aerial Next Tags"))
+
 -- Formatter and Linters
 keymap("n", "<leader>ml", function()
 	require("lint").try_lint()
