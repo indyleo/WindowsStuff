@@ -39,10 +39,17 @@ keymap("n", "<C-h>", "<C-w>h", opt)
 keymap("n", "<C-j>", "<C-w>j", opt)
 keymap("n", "<C-k>", "<C-w>k", opt)
 keymap("n", "<C-l>", "<C-w>l", opt)
+
+-- Resize splits
 keymap("n", "<C-S-h>", ":resize -2<CR>", opt)
 keymap("n", "<C-S-l>", ":resize +2<CR>", opt)
 keymap("n", "<C-S-j>", ":vertical resize -2<CR>", opt)
 keymap("n", "<C-S-k>", ":vertical resize +2<CR>", opt)
+
+-- Making splits
+keymap("n", "<leader>sv", ":vsplit<CR>", opts("Makes a Vertical Spilt"))
+keymap("n", "<leader>sh", ":split<CR>", opts("Makes a Horizontal Spilt"))
+keymap("n", "<leader>sq", ":close!<CR>", opts("Kill a Spilt"))
 
 -- Buffer managment
 keymap("n", "<S-l>", ":bnext<CR>", opt)
@@ -52,30 +59,12 @@ keymap("n", "<S-q>", ":Bdelete!<CR>", opt)
 -- Clear highlights
 keymap("n", "<leader>hl", ":nohlsearch<CR>", opts("Clear highlights"))
 
--- Better paste
-keymap("v", "p", "P", opt)
-
--- Toggle spellcheck off and on
-keymap("n", "<leader>sp", function()
-	ToggleSpellCheck()
-end, opts("Toggles spell check"))
-
--- Source the main conf file and current file
-keymap("n", "<leader>so", function()
-	SourceConf(Main)
-end, opts("Source init.lua"))
-keymap("n", "<leader>se", function()
-	SourceConf(Current)
-end, opts("Source current file in buffer"))
+-- Run current line (Only in lua)
+keymap("n", "<leader>rc", ":.lua<CR>", opts("Runs line under cursor"))
 
 -- Increment/Decrement numbers
 keymap("n", "a", "<C-a>", opt)
-keymap("n", "z", "<C-x>", opt)
-
--- Number Options
-keymap("n", "<C-n>", function()
-	ToggleLineNumbers()
-end, opt)
+keymap("n", "q", "<C-x>", opt)
 
 -- Http Server
 keymap("n", "<leader>hn", function()
@@ -85,11 +74,6 @@ keymap("n", "<leader>hf", function()
 	HttpServer(Stop)
 end, opts("Stop http server"))
 
--- Insert file header
-keymap("n", "<leader>hi", function()
-	InsertFileHeader()
-end, opts("Insert a file header"))
-
 -- Insert --
 
 -- Press jk fast to enter
@@ -97,11 +81,17 @@ keymap("i", "jk", "<esc>", opt)
 
 -- Visual --
 
--- Stay in indent mode
+-- Moving text around
 keymap("v", "<", "<gv", opt)
 keymap("v", ">", ">gv", opt)
 keymap("v", "J", ":m '>+1<CR>gv=gv", opt)
 keymap("v", "K", ":m '<-2<CR>gv=gv", opt)
+
+-- Better paste
+keymap("v", "p", "P", opt)
+
+-- Run current selection (Only in lua)
+keymap("v", "<leader>rc", ":lua<CR>", opts("Runs selection"))
 
 ---- Plugins ----
 

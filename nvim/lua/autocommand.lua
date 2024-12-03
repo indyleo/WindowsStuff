@@ -15,7 +15,7 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 		local wezterm_config_path = normalize_path(vim.fn.expand("~") .. "/.config/wezterm")
 
 		-- List of files to exclude
-		local excluded_files = { "autocommand.lua", "options.lua" }
+		local excluded_files = { "autocommand.lua", "options.lua", "init.lua" }
 
 		-- Check if the current file is in the exclusion list
 		for _, excluded_file in ipairs(excluded_files) do
@@ -66,5 +66,13 @@ vim.api.nvim_create_autocmd("BufNewFile", {
 		vim.defer_fn(function()
 			InsertFileHeader()
 		end, 10) -- Delay of 10ms
+	end,
+})
+
+-- Highlight on yank
+vim.api.nvim_create_autocmd("TextYankPost", {
+	group = vim.api.nvim_create_augroup("Highlight-Yank", { clear = true }),
+	callback = function()
+		vim.highlight.on_yank()
 	end,
 })

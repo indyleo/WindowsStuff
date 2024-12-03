@@ -57,7 +57,7 @@ opt.whichwrap:append("<,>,[,],h,l")
 opt.iskeyword:append("-")
 opt.formatoptions:remove({ "c", "r", "o" })
 opt.linebreak = true
-opt.spelllang = "en_us"
+opt.spelllang = "en_ca"
 opt.spell = false
 opt.foldcolumn = "1"
 opt.foldlevel = 99
