@@ -14,6 +14,9 @@ function down
 function docs
 { Set-Location -Path $HOME\Documents 
 }
+function mark
+{ Set-Location -Path $HOME\Documents\Markdown 
+}
 function dats
 { Set-Location -Path $HOME\AppData 
 }
@@ -39,7 +42,7 @@ function Edit-Function
 }
 
 ### Shell Aliases
-function Reload-Profile
+function Reset-Profile
 { & $profile 
 }
 function k9

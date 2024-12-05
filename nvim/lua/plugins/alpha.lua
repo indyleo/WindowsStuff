@@ -51,6 +51,11 @@ return {
 				"  > Config Starship",
 				":e " .. vim.loop.os_homedir() .. "/.config/starship.toml<CR>"
 			),
+			dashboard.button(
+				"md",
+				"  > Opens My Markdown Folder",
+				":e " .. vim.loop.os_homedir() .. "/Documents/Markdown<CR>"
+			),
 			dashboard.button("q", "  > Quit Nvim", ":qa<CR>"),
 		}
 

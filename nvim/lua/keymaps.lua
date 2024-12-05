@@ -148,6 +148,9 @@ keymap("n", "<leader>5", function()
 	require("harpoon"):list():select(5)
 end, opts("Open file 5"))
 
+-- Markdown Preview
+keymap("n", "<leader>hp", ":MarkdownPreviewToggle<CR>", opts("Toggles Markdown Preview"))
+
 -- ToggleTerm
 keymap("n", "<C-q>", ":ToggleTerm<CR>", opt)
 
