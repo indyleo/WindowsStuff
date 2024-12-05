@@ -20,7 +20,7 @@ function Test-IsRunningInNeovim
     }
 
     # Check if either the parent or grandparent process is 'nvim'
-    return ($parentProcess -and $parentProcess.Name -eq 'nvim') -or ($grandparentProcess -and $grandparentProcess.Name -eq 'nvim')
+    return ($parentProcess -and $parentProcess.Name -eq "nvim") -or ($grandparentProcess -and $grandparentProcess.Name -eq "nvim")
   } catch
   {
     # If any errors occur, assume we're not running in Neovim
@@ -41,18 +41,18 @@ if (-not (Test-IsRunningInNeovim))
 
 # Varables Configs
 $VISUAL = if (Test-CommandExists neovide)
-{ 'neovide' 
+{ "neovide" 
 } else
 { Write-Host "Neovide is not installed." 
 }
 $EDITOR = if (Test-CommandExists nvim)
-{ 'nvim' 
+{ "nvim" 
 } else
 { Write-Host "Neovim is not installed." 
 }
 $AlIAS = "$HOME\Documents\Powershell\Sources\Aliases.ps1"
 $FUNCTION = "$HOME\Documents\Powershell\Sources\Functions.ps1"
-$COMP = @("$HOME\Documents\Powershell\Sources\Gh-Completion.ps1", "$HOME\Documents\Powershell\Sources\Starship-Completions.ps1", "$HOME\Documents\Powershell\Sources\Wezterm-Completion.ps1")
+$COMP = @("$HOME\Documents\Powershell\Sources\Gh-Completion.ps1", "$HOME\Documents\Powershell\Sources\Starship-Completion.ps1", "$HOME\Documents\Powershell\Sources\Wezterm-Completion.ps1", "$HOME\Documents\Powershell\Sources\Winget-Completion.ps1")
 
 # Imports
 Import-Module -Name gsudoModule
@@ -64,7 +64,7 @@ Set-PSReadlineOption -EditMode vi
 # Opt-out of telemetry before doing anything, only if PowerShell is run as admin
 if ([bool]([System.Security.Principal.WindowsIdentity]::GetCurrent()).IsSystem)
 {
-  [System.Environment]::SetEnvironmentVariable('POWERSHELL_TELEMETRY_OPTOUT', 'true', [System.EnvironmentVariableTarget]::Machine)
+  [System.Environment]::SetEnvironmentVariable("POWERSHELL_TELEMETRY_OPTOUT", "true", [System.EnvironmentVariableTarget]::Machine)
 }
 
 # Admin Check and Prompt Customization
@@ -86,16 +86,16 @@ $Host.UI.RawUI.WindowTitle = "PowerShell {0}$adminSuffix" -f $PSVersionTable.PSV
 
 # Enhanced PowerShell Experience
 Set-PSReadLineOption -Colors @{
-  Command = 'Yellow'
-  Parameter = 'Green'
-  String = 'DarkCyan'
+  Command = "Yellow"
+  Parameter = "Green"
+  String = "DarkCyan"
 }
 
 $scriptblock = {
   param($wordToComplete, $commandAst, $cursorPosition)
   dotnet complete --position $cursorPosition $commandAst.ToString() |
     ForEach-Object {
-      [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_)
+      [System.Management.Automation.CompletionResult]::new($_, $_, "ParameterValue", $_)
     }
 }
 Register-ArgumentCompleter -Native -CommandName dotnet -ScriptBlock $scriptblock
