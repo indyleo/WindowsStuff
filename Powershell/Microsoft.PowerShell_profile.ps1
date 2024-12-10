@@ -153,6 +153,18 @@ if (Test-Path $COMP[2] )
   Write-Host "Wezterm file does not exist."
 }
 
+if (Test-Path $COMP[3] )
+{
+  if ( Test-CommandExists winget )
+  { . $COMP[3] 
+  } else
+  { Write-Host "Winget not installed" 
+  }
+} else
+{
+  Write-Host "Winget file does not exist."
+}
+
 # Zoxide Check
 if (Test-CommandExists zoxide )
 {

@@ -20,6 +20,7 @@ Unblock-File $FUNCTION
 Unblock-File $COMP[0]
 Unblock-File $COMP[1]
 Unblock-File $COMP[2]
+Unblock-File $COMP[3]
 ```
 
 ## Nice Stuff For The Powershell config:
