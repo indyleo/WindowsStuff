@@ -58,9 +58,6 @@ $COMP = @("$HOME\Documents\Powershell\Sources\Gh-Completion.ps1", "$HOME\Documen
 Import-Module -Name gsudoModule
 Import-Module -Name posh-git
 
-# Use vi keys to edit in terminal
-Set-PSReadlineOption -EditMode vi
-
 # Opt-out of telemetry before doing anything, only if PowerShell is run as admin
 if ([bool]([System.Security.Principal.WindowsIdentity]::GetCurrent()).IsSystem)
 {
