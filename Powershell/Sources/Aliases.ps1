@@ -29,8 +29,9 @@ Set-Alias -Name su -Value admin
 Set-Alias -Name sudo -Value gsudo
 
 ### Code Aliases
-Set-Alias -Name v -Value $EDITOR
+
 Set-Alias -Name vv -Value $VISUAL
+Set-Alias -Name v -Value $EDITOR
 function Edit-Profile
 { nvim $PROFILE 
 }

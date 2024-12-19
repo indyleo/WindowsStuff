@@ -2,7 +2,7 @@
 #SingleInstance Force
 
 ;;; Variables
-USER := "UR-USER-HERE"
+USER := "Ur-User-Here"
 
 ;;; Media/Audio Keys
 
@@ -49,17 +49,13 @@ USER := "UR-USER-HERE"
 ; Hotkey to open File Explorer
 !f::Run("explorer.exe")
 
-; Open Neovide (Editor)
-!e::Run("C:\Users\" . USER . "\scoop\apps\neovide\current\neovide.exe")
-
 ;;; A Key to Different Key
 
-; Caps -> Esc & Esc -> Ctrl + V (only if Neovide/Vim is focused)
-#HotIf WinActive("ahk_exe Neovide.exe") || WinActive("ahk_class org.wezfurlong.wezterm")
+; Caps -> Esc & Esc -> Ctrl + V (only if Wezterm is focused)
+#HotIf WinActive("ahk_class org.wezfurlong.wezterm") && WinExist("ahk_class org.wezfurlong.wezterm") && InStr(WinGetTitle("A"), "neovim")
 {
     Capslock::Send("{Esc}")
     Esc::Send("^v")
-
 }
 #HotIf
 

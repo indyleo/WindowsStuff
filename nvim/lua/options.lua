@@ -66,6 +66,8 @@ opt.foldenable = true
 vim.opt.shell = "pwsh" -- Use "powershell.exe" if you're using the legacy shell
 vim.opt.shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command"
 vim.opt.shellxquote = ""
+opt.title = true
+opt.titlestring = "Neovim - %t (%{expand('%:p:h')})"
 
 -- Neovide Opts
 if vim.g.neovide then
