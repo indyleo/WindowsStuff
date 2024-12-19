@@ -10,10 +10,6 @@ return {
 			json = { "jsonlint" },
 			yaml = { "yamllint" },
 
-			-- Git
-			gitcommit = { "gitlint" },
-			gitconfig = { "gitleaks" },
-
 			-- Web
 			javascript = { "eslint_d" },
 			typescript = { "eslint_d" },

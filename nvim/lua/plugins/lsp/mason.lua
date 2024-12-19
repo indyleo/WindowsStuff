@@ -52,10 +52,6 @@ return {
 				"markdownlint-cli2",
 				"codespell",
 
-				-- Git
-				"gitleaks",
-				"gitlint",
-
 				-- Web
 				"htmlhint",
 				"stylelint",
