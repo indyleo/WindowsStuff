@@ -32,6 +32,40 @@ vim.g.maplocalleader = " "
 
 ---- Non-Plugin ----
 
+-- Lang specific keybinds --
+vim.api.nvim_create_autocmd("BufEnter", {
+	group = vim.api.nvim_create_augroup("LuaMaps", { clear = true }),
+	pattern = "*.lua",
+	callback = function(args)
+		local bufnr = args.buf
+		local langopts = function(desc)
+			return { desc = desc, buffer = bufnr, noremap = true, silent = true }
+		end
+		-- Run current line
+		keymap("n", "<leader>rc", ":.lua<CR>", langopts("Runs line under cursor"))
+		-- Run current selection
+		keymap("v", "<leader>rc", ":lua<CR>", langopts("Runs selection"))
+	end,
+})
+
+vim.api.nvim_create_autocmd("BufEnter", {
+	group = vim.api.nvim_create_augroup("HtmlMaps", { clear = true }),
+	pattern = "*.html",
+	callback = function(args)
+		local bufnr = args.buf
+		local langopts = function(desc)
+			return { desc = desc, buffer = bufnr, noremap = true, silent = true }
+		end
+		-- Http Server
+		keymap("n", "<leader>hn", function()
+			HttpServer(Start)
+		end, langopts("Start http server"))
+		keymap("n", "<leader>hf", function()
+			HttpServer(Stop)
+		end, langopts("Stop http server"))
+	end,
+})
+
 -- Normal --
 
 -- Better window managment
@@ -59,25 +93,14 @@ keymap("n", "<S-q>", ":Bdelete!<CR>", opt)
 -- Clear highlights
 keymap("n", "<leader>hl", ":nohlsearch<CR>", opts("Clear highlights"))
 
--- Run current line (Only in lua)
-keymap("n", "<leader>rc", ":.lua<CR>", opts("Runs line under cursor"))
-
 -- Increment/Decrement numbers
 keymap("n", "a", "<C-a>", opt)
 keymap("n", "q", "<C-x>", opt)
 
--- Http Server
-keymap("n", "<leader>hn", function()
-	HttpServer(Start)
-end, opts("Start http server"))
-keymap("n", "<leader>hf", function()
-	HttpServer(Stop)
-end, opts("Stop http server"))
-
 -- Insert --
 
 -- Press jk fast to enter
-keymap("i", "jk", "<esc>", opt)
+keymap("i", "jk", "<Esc>", opt)
 
 -- Visual --
 
@@ -89,9 +112,6 @@ keymap("v", "K", ":m '<-2<CR>gv=gv", opt)
 
 -- Better paste
 keymap("v", "p", "P", opt)
-
--- Run current selection (Only in lua)
-keymap("v", "<leader>rc", ":lua<CR>", opts("Runs selection"))
 
 ---- Plugins ----
 
@@ -112,24 +132,14 @@ keymap("n", "<leader>xq", ":Trouble quickfix toggle<CR>", opts("Open trouble qui
 keymap("n", "<leader>xl", ":Trouble loclist toggle<CR>", opts("Open trouble location list"))
 keymap("n", "<leader>xt", ":Trouble todo toggle<CR>", opts("Open todos in trouble"))
 
--- Nvim Tree
-keymap("n", "<leader>ee", ":NvimTreeToggle<CR>", opts("Toggle file explorer"))
-keymap("n", "<leader>ef", ":NvimTreeFindFileToggle<CR>", opts("Toggle file explorer on current file"))
-keymap("n", "<leader>ec", ":NvimTreeCollapse<CR>", opts("Collapse file explorer"))
-keymap("n", "<leader>er", ":NvimTreeRefresh<CR>", opts("Refresh file explorer"))
-keymap("n", "<leader>eb", ":NvimTreeClipboard<CR>", opts("Show whats in Nvim-tree clipboard"))
-keymap("n", "<leader>cn", function()
-	require("nvim-tree.api").tree.change_root_to_node()
-end, opts("Cd into a child directory"))
-keymap("n", "<leader>cp", function()
-	require("nvim-tree.api").tree.change_root_to_parent()
-end, opts("Cd into a parent directory"))
+-- Oil Nvim
+keymap("n", "<leader>ee", ":Oil --float<CR>", opts("Toggles Oil"))
 
 -- Harpoon
 keymap("n", "<leader>a", function()
 	require("harpoon"):list():add()
 end, opts("Marks a file"))
-keymap("n", "<C-e>", function()
+keymap("n", "<leader>hu", function()
 	require("harpoon").ui:toggle_quick_menu(require("harpoon"):list())
 end, opts("Opens Harpoon Menu"))
 keymap("n", "<leader>1", function()
@@ -148,18 +158,6 @@ keymap("n", "<leader>5", function()
 	require("harpoon"):list():select(5)
 end, opts("Open file 5"))
 
--- Markdown Preview
-keymap("n", "<leader>hp", ":MarkdownPreviewToggle<CR>", opts("Toggles Markdown Preview"))
-
--- ToggleTerm
-keymap("n", "<C-q>", ":ToggleTerm<CR>", opt)
-
--- Alpha Nvim
-keymap("n", "<C-z>", ":Alpha<CR>", opt)
-
--- Alpha Nvim
-keymap("n", "<C-g>", ":LazyGit<CR>", opt)
-
 -- Comment
 keymap("n", "<leader>/", function()
 	require("Comment.api").toggle.linewise.current()
@@ -167,26 +165,9 @@ end, opts("Comments line"))
 keymap(
 	{ "x", "v" },
 	"<leader>/",
-	"<esc><:lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
+	"<Esc><:lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
 	opts("Comments multi-line")
 )
-
--- Flash
-keymap({ "n", "x", "o" }, "<leader>jj", function()
-	require("flash").jump()
-end, opts("Flash jump"))
-keymap({ "n", "x", "o" }, "<leader>jt", function()
-	require("flash").treesitter()
-end, opts("Flash treesiter jump"))
-keymap("o", "<leader>jr", function()
-	require("flash").remote()
-end, opts("Flash remote"))
-keymap({ "x", "o" }, "<leader>jR", function()
-	require("flash").treesitter_search()
-end, opts("Flash remote"))
-keymap("c", "<leader>js", function()
-	require("flash").toggle()
-end, opts("Flash toggle search"))
 
 -- Nvim Ufo
 keymap("n", "<leader>zr", function()
@@ -274,8 +255,3 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.notify("Lsp Attached to: " .. vim.fn.expand("%:t"), vim.log.levels.INFO)
 	end,
 })
-
--- Zen Mode
-keymap("n", "<leader>zz", function()
-	ToggleZen()
-end, opts("Toggle zen mode"))

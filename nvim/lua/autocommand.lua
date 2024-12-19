@@ -76,3 +76,10 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 		vim.highlight.on_yank()
 	end,
 })
+
+-- Hides the "[Process exited 0]" call whenever you close a terminal
+vim.api.nvim_create_autocmd("TermClose", {
+	callback = function()
+		vim.cmd("silent! bd!") -- Close the buffer silently
+	end,
+})

@@ -9,7 +9,7 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 -- Gui Setup
-vim.o.guifont = "CaskaydiaCove NF:h12"
+opt.guifont = "CaskaydiaCove NF:h12"
 
 -- Options
 opt.backup = false
@@ -59,10 +59,13 @@ opt.formatoptions:remove({ "c", "r", "o" })
 opt.linebreak = true
 opt.spelllang = "en_ca"
 opt.spell = false
-opt.foldcolumn = "1"
+opt.foldcolumn = "0"
 opt.foldlevel = 99
 opt.foldlevelstart = 99
 opt.foldenable = true
+vim.opt.shell = "pwsh" -- Use "powershell.exe" if you're using the legacy shell
+vim.opt.shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command"
+vim.opt.shellxquote = ""
 
 -- Neovide Opts
 if vim.g.neovide then
