@@ -63,8 +63,8 @@ return {
 					{ "filetype" },
 				},
 				lualine_c = {
-					{ "aerial", dense = true },
 					{ "filename" },
+					{ "aerial", dense = true },
 				},
 			},
 		})
