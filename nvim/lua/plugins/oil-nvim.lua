@@ -24,6 +24,8 @@ return {
 				border = "rounded",
 				win_options = {
 					winblend = 0,
+					number = false,
+					relativenumber = false,
 				},
 				override = function(conf)
 					return conf

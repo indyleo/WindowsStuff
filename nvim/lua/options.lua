@@ -68,14 +68,3 @@ vim.opt.shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Comman
 vim.opt.shellxquote = ""
 opt.title = true
 opt.titlestring = "Neovim - %t (%{expand('%:p:h')})"
-
--- Neovide Opts
-if vim.g.neovide then
-	vim.g.neovide_padding_top = 15
-	vim.g.neovide_padding_bottom = 15
-	vim.g.neovide_padding_right = 15
-	vim.g.neovide_padding_left = 15
-	vim.g.neovide_fullscreen = true
-	vim.g.neovide_cursor_vfx_mode = "pixiedust"
-	vim.cmd("cd $HOME")
-end

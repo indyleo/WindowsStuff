@@ -191,10 +191,11 @@ keymap("n", "<leader>fr", ":Telescope oldfiles<CR>", opts("Fuzzy find recent fil
 keymap("n", "<leader>fs", ":Telescope live_grep<CR>", opts("Find string in cwd"))
 keymap("n", "<leader>fc", ":Telescope grep_string<CR>", opts("Find string under cursor in cwd"))
 keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts("List active file buffers"))
+keymap("n", "<leader>fk", ":Telescope keymaps<CR>", opts("List keymaps"))
+keymap("n", "<leader>fh", ":Telescope help_tags<CR>", opts("Fuzzy find help pages"))
 keymap("n", "<leader>ft", ":TodoTelescope<CR>", opts("Find todos"))
 keymap("n", "<leader>fu", ":Telescope undo<CR>", opts("Opens undo managment"))
 keymap("n", "<leader>fn", ":Telescope notify<CR>", opts("Opens notification histroy"))
-keymap("n", "<leader>fh", ":Telescope help_tags<CR>", opts("Fuzzy find help pages"))
 
 -- Aerial
 keymap("n", "<leader>tt", ":AerialToggle! right<CR>", opts("Aerial Toggle Tree Tags"))

@@ -6,29 +6,16 @@ return {
 		local dashboard = require("alpha.themes.dashboard")
 
 		-- Set header
-		if vim.g.neovide then
-			dashboard.section.header.val = {
-				"                                                          ",
-				"  ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███████╗ ███████╗",
-				"  ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║██╔═══██╗██╔════╝",
-				"  ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██║   ██║█████╗  ",
-				"  ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║   ██║██╔══╝  ",
-				"  ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║███████╔╝███████╗",
-				"  ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚══════╝ ╚══════╝",
-				"                                                          ",
-			}
-		else
-			dashboard.section.header.val = {
-				"                                                     ",
-				"  ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗ ",
-				"  ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║ ",
-				"  ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║ ",
-				"  ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║ ",
-				"  ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║ ",
-				"  ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ",
-				"                                                     ",
-			}
-		end
+		dashboard.section.header.val = {
+			"                                                     ",
+			"  ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗ ",
+			"  ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║ ",
+			"  ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║ ",
+			"  ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║ ",
+			"  ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║ ",
+			"  ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ",
+			"                                                     ",
+		}
 		-- Set menu
 		dashboard.section.buttons.val = {
 			dashboard.button("e", "  > New File", ":lua AskNewFileName()<CR>"),
@@ -38,7 +25,7 @@ return {
 			dashboard.button(
 				"ct",
 				"  > Config WezTerm",
-				":Oil --float " .. vim.loop.os_homedir() .. "/.config/wezterm/wezterm.lua<CR>"
+				"e " .. vim.loop.os_homedir() .. "/.config/wezterm/wezterm.lua<CR>"
 			),
 			dashboard.button(
 				"cf",
@@ -53,7 +40,7 @@ return {
 			dashboard.button(
 				"cs",
 				"  > Config Starship",
-				":Oil --float " .. vim.loop.os_homedir() .. "/.config/starship.toml<CR>"
+				":e " .. vim.loop.os_homedir() .. "/.config/starship.toml<CR>"
 			),
 			dashboard.button(
 				"md",
