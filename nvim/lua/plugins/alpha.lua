@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-field
 return {
 	"goolord/alpha-nvim",
 	event = "VimEnter",
@@ -25,7 +26,7 @@ return {
 			dashboard.button(
 				"ct",
 				"  > Config WezTerm",
-				"e " .. vim.loop.os_homedir() .. "/.config/wezterm/wezterm.lua<CR>"
+				":e " .. vim.loop.os_homedir() .. "/.config/wezterm/wezterm.lua<CR>"
 			),
 			dashboard.button(
 				"cf",

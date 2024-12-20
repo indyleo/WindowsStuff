@@ -97,6 +97,10 @@ keymap("n", "<leader>hl", ":nohlsearch<CR>", opts("Clear highlights"))
 keymap("n", "a", "<C-a>", opt)
 keymap("n", "q", "<C-x>", opt)
 
+-- Exit neovim
+keymap("n", "<leader>qw", ":wqa!<CR>", opts("Write and Exit neovim"))
+keymap("n", "<leader>qq", ":qa!<CR>", opts("Exit neovim"))
+
 -- Insert --
 
 -- Press jk fast to enter
