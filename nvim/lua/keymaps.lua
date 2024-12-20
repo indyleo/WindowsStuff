@@ -136,6 +136,9 @@ keymap("n", "<leader>xq", ":Trouble quickfix toggle<CR>", opts("Open trouble qui
 keymap("n", "<leader>xl", ":Trouble loclist toggle<CR>", opts("Open trouble location list"))
 keymap("n", "<leader>xt", ":Trouble todo toggle<CR>", opts("Open todos in trouble"))
 
+-- Noice
+keymap("n", "<leader>nh", ":NoiceDismiss<CR>", opts("Dimmis noice notifications"))
+
 -- Oil Nvim
 keymap("n", "<leader>ee", ":Oil --float<CR>", opts("Toggles Oil"))
 
