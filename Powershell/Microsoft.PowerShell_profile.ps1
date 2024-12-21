@@ -6,44 +6,20 @@ function Test-CommandExists
   return $exists
 }
 
-# Check if the parent process is Neovim so fastfetch doesn't launch when in Neovim
-function Test-IsRunningInNeovim
+# Makes sure fastfetch is there
+if (Test-CommandExists fastfetch)
 {
-  try
-  {
-    $currentProcess = Get-Process -Id $PID
-    $parentProcess = Get-Process -Id $currentProcess.Parent.Id -ErrorAction SilentlyContinue
-    $grandparentProcess = if ($parentProcess -and $parentProcess.Parent)
-    { Get-Process -Id $parentProcess.Parent.Id -ErrorAction SilentlyContinue 
-    } else
-    { $null 
-    }
-
-    # Check if either the parent or grandparent process is 'nvim'
-    return ($parentProcess -and $parentProcess.Name -eq "nvim") -or ($grandparentProcess -and $grandparentProcess.Name -eq "nvim")
-  } catch
-  {
-    # If any errors occur, assume we're not running in Neovim
-    return $false
-  }
-}
-
-if (-not (Test-IsRunningInNeovim))
+  fastfetch
+} else
 {
-  if (Test-CommandExists fastfetch)
-  {
-    fastfetch
-  } else
-  {
-    Write-Host "Fastfetch is not installed."
-  }
+  Write-Host "Fastfetch is not installed."
 }
 
 # Varables Configs
-$VISUAL = if (Test-CommandExists neovide)
-{ "neovide" 
+$VISUAL = if (Test-CommandExists notepad)
+{ "notepad" 
 } else
-{ Write-Host "Neovide is not installed." 
+{ Write-Host "How is Notepad not installed!" 
 }
 $EDITOR = if (Test-CommandExists nvim)
 { "nvim" 
@@ -148,18 +124,6 @@ if (Test-Path $COMP[2] )
 } else
 {
   Write-Host "Wezterm file does not exist."
-}
-
-if (Test-Path $COMP[3] )
-{
-  if ( Test-CommandExists winget )
-  { . $COMP[3] 
-  } else
-  { Write-Host "Winget not installed" 
-  }
-} else
-{
-  Write-Host "Winget file does not exist."
 }
 
 # Zoxide Check
