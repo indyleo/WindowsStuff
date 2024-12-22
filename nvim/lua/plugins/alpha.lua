@@ -22,6 +22,8 @@ return {
 			dashboard.button("e", "  > New File", ":lua AskNewFileName()<CR>"),
 			dashboard.button("SPC ee", "  > Toggle file explorer", ":Oil --float<CR>"),
 			dashboard.button("SPC ff", "󰱼  > Find File", ":Telescope find_files<CR>"),
+			dashboard.button("SPC wr", "  > Restore Session", ":SessionRestore<CR>"),
+			dashboard.button("SPC wf", "  > Search Sessions", ":SessionSearch<CR>"),
 			dashboard.button("ce", "  > Config Nvim", ':lua OilDir(vim.fn.stdpath("config"))<CR>'),
 			dashboard.button(
 				"ct",

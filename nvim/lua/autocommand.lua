@@ -32,13 +32,16 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 			end
 		end
 
-		-- Skip WezTerm configuration files
+		-- Skip Some area configuration files
 		if current_file:sub(1, #wezterm_config_path) == wezterm_config_path then
+			return
+		end
+		if current_file:sub(1, #plugins_path) == plugins_path then
 			return
 		end
 
 		-- Check if the current file is within the Neovim config directory and not in the plugins folder
-		if current_file:sub(1, #config_path) == config_path and current_file:sub(1, #plugins_path) ~= plugins_path then
+		if current_file:sub(1, #config_path) == config_path then
 			-- Try to source the file
 			local ok, err = pcall(function()
 				vim.cmd.source(current_file)
