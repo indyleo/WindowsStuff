@@ -36,7 +36,7 @@ $scala\
 [](bg:#0451A5 fg:#007ACC)\
 $docker_context\
 [](bg:#252526 fg:#0451A5)\
-[ 󰥔](bg:#252526)\
+[ ](bg:#252526)\
 $time\
 [ ](fg:#252526)\
 """
@@ -131,7 +131,7 @@ style = "bg:#007ACC"
 format = "[ $symbol ($version) ]($style)"
 
 [lua]
-symbol = "󰢱 "
+symbol = " "
 style = "bg:#007ACC"
 format = "[ $symbol ($version) ]($style)"
 

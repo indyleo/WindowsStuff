@@ -1,5 +1,6 @@
 -- Source cwf is nvim conf file
 vim.api.nvim_create_autocmd("BufWritePost", {
+	group = vim.api.nvim_create_augroup("SourceCwf", { clear = true }),
 	pattern = "*.lua",
 	callback = function()
 		-- Normalize path separators for comparison
@@ -55,6 +56,7 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 
 -- Automatically add the header on new file creation
 vim.api.nvim_create_autocmd("BufNewFile", {
+	group = vim.api.nvim_create_augroup("FileHeader", { clear = true }),
 	pattern = "*",
 	callback = function()
 		-- Delay execution to ensure filetype is set
@@ -69,5 +71,23 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	group = vim.api.nvim_create_augroup("Highlight-Yank", { clear = true }),
 	callback = function()
 		vim.highlight.on_yank()
+	end,
+})
+
+-- Hides the "[Process exited 0]" call whenever you close a terminal
+vim.api.nvim_create_autocmd("TermClose", {
+	group = vim.api.nvim_create_augroup("SilentKill", { clear = true }),
+	callback = function()
+		vim.cmd("silent! bd!") -- Close the buffer silently
+	end,
+})
+
+vim.api.nvim_create_autocmd("TermOpen", {
+	group = vim.api.nvim_create_augroup("TermSettings", { clear = true }),
+	pattern = "*",
+	callback = function()
+		vim.opt_local.number = false
+		vim.opt_local.relativenumber = false
+		vim.opt_local.signcolumn = "no"
 	end,
 })

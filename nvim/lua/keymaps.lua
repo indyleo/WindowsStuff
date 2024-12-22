@@ -101,6 +101,10 @@ keymap("n", "q", "<C-x>", opt)
 keymap("n", "<leader>qw", ":wqa!<CR>", opts("Write and Exit neovim"))
 keymap("n", "<leader>qq", ":qa!<CR>", opts("Exit neovim"))
 
+-- Terminal Stuuf
+keymap({ "n", "t" }, "<leader>tr", ":ToggleTerm<CR>", opts("Toggle terminal"))
+keymap({ "n", "t" }, "<leader>tg", ":ToggleLazygit<CR>", opts("Toggle lazygit"))
+
 -- Insert --
 
 -- Press jk fast to enter
@@ -116,6 +120,9 @@ keymap("v", "K", ":m '<-2<CR>gv=gv", opt)
 
 -- Better paste
 keymap("v", "p", "P", opt)
+
+-- Terminal --
+keymap("t", "<Esc><Esc>", "<C-\\><C-n>", opts("Exit terminal to normal Mode"))
 
 ---- Plugins ----
 

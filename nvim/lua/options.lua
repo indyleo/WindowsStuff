@@ -2,7 +2,9 @@
 local opt = vim.opt
 
 -- Vim Commands
-vim.cmd("let g:netrw_liststyle = 3")
+vim.cmd([[
+  let g:netrw_liststyle = 3
+]])
 
 -- Disabling NetRW
 vim.g.loaded_netrw = 1
