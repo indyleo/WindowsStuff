@@ -1,6 +1,6 @@
 # WindowsStuff
 
-## Reqired Steps to get working:
+## Reqired Steps to get working
 
 - Run this:
 
@@ -23,7 +23,7 @@ Unblock-File $COMP[2]
 Unblock-File $COMP[3]
 ```
 
-## Nice Stuff For The Powershell config:
+## Nice Stuff For The Powershell config
 
 - Do this for git completions:
 
@@ -43,14 +43,10 @@ For A Better Gsudo do this:
 gsudo config CacheMode Auto
 ```
 
-## Proper locations for config file:
+## Proper locations for config file
 
 ```pwsh
-mv .\nvim $HOME\AppData\Local\
-```
-
-```pwsh
-mv.\wezterm .\fastfetch  .\starship.toml $HOME\.config\
+mv .\nvim .\wezterm .\fastfetch  .\starship.toml $XDG_CONFIG_HOME\.config\
 ```
 
 ```pwsh

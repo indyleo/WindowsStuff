@@ -73,6 +73,9 @@ $scriptblock = {
 }
 Register-ArgumentCompleter -Native -CommandName dotnet -ScriptBlock $scriptblock
 
+# Environment Setting
+$env:XDG_CONFIG_HOME = "$HOME\.config"
+
 # Sourcing Files
 if (Test-Path $AlIAS)
 {

@@ -29,19 +29,19 @@ return {
 				":e " .. vim.loop.os_homedir() .. "/.config/wezterm/wezterm.lua<CR>"
 			),
 			dashboard.button(
-				"cf",
-				"  > Config FastFetch",
-				":e " .. vim.loop.os_homedir() .. "/.config/fastfetch/config.jsonc<CR>"
-			),
-			dashboard.button(
-				"cp",
+				"cs",
 				"  > Config Powershell",
 				":Oil --float " .. vim.loop.os_homedir() .. "/Documents/Powershell<CR>"
 			),
 			dashboard.button(
-				"cs",
+				"cp",
 				"  > Config Starship",
 				":e " .. vim.loop.os_homedir() .. "/.config/starship.toml<CR>"
+			),
+			dashboard.button(
+				"cf",
+				"  > Config FastFetch",
+				":e " .. vim.loop.os_homedir() .. "/.config/fastfetch/config.jsonc<CR>"
 			),
 			dashboard.button(
 				"md",
