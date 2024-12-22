@@ -22,31 +22,31 @@ return {
 			dashboard.button("e", "  > New File", ":lua AskNewFileName()<CR>"),
 			dashboard.button("SPC ee", "  > Toggle file explorer", ":Oil --float<CR>"),
 			dashboard.button("SPC ff", "󰱼  > Find File", ":Telescope find_files<CR>"),
-			dashboard.button("ce", "  > Config Nvim", ":Oil --float " .. vim.fn.stdpath("config") .. "<CR>"),
+			dashboard.button("ce", "  > Config Nvim", ':lua OilDir(vim.fn.stdpath("config"))<CR>'),
 			dashboard.button(
 				"ct",
 				"  > Config WezTerm",
-				":e " .. vim.loop.os_homedir() .. "/.config/wezterm/wezterm.lua<CR>"
+				':lua EditFile(vim.loop.os_homedir() .. "/.config/wezterm/", "wezterm.lua")<CR>'
 			),
 			dashboard.button(
 				"cs",
 				"  > Config Powershell",
-				":Oil --float " .. vim.loop.os_homedir() .. "/Documents/Powershell<CR>"
+				':lua OilDir(vim.loop.os_homedir() .. "/Documents/PowerShell")<CR>'
 			),
 			dashboard.button(
 				"cp",
 				"  > Config Starship",
-				":e " .. vim.loop.os_homedir() .. "/.config/starship.toml<CR>"
+				':lua EditFile(vim.loop.os_homedir() .. "/.config/", "starship.toml")<CR>'
 			),
 			dashboard.button(
 				"cf",
 				"  > Config FastFetch",
-				":e " .. vim.loop.os_homedir() .. "/.config/fastfetch/config.jsonc<CR>"
+				':lua EditFile(vim.loop.os_homedir() .. "/.config/fastfetch/", "config.jsonc")<CR>'
 			),
 			dashboard.button(
 				"md",
 				"  > Opens My Markdown Folder",
-				":Oil --float " .. vim.loop.os_homedir() .. "/Documents/Markdown<CR>"
+				':lua OilDir(vim.loop.os_homedir() .. "/Documents/Markdown")<CR>'
 			),
 			dashboard.button("q", "  > Quit Nvim", ":qa<CR>"),
 		}
