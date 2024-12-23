@@ -82,12 +82,8 @@ keymap("n", "<M-k>", ":resize -2<CR>", opt)
 keymap("n", "<M-=>", "<C-w>=", opt)
 
 -- Making splits
-keymap("n", "<leader>sv", function()
-	NewVSplit()
-end, opts("Makes a Vertical Spilt"))
-keymap("n", "<leader>sh", function()
-	NewHSplit()
-end, opts("Makes a Horizontal Spilt"))
+keymap("n", "<leader>sv", ":NewVSplit<CR>", opts("Makes a Vertical Spilt"))
+keymap("n", "<leader>sh", ":NewHSplit<CR>", opts("Makes a Horizontal Spilt"))
 keymap("n", "<leader>sq", ":close!<CR>", opts("Kill a Spilt"))
 
 -- Buffer managment
@@ -103,8 +99,10 @@ keymap("n", "a", "<C-a>", opt)
 keymap("n", "q", "<C-x>", opt)
 
 -- Exit neovim
-keymap("n", "<leader>qw", ":wqa!<CR>", opts("Write and Exit neovim"))
-keymap("n", "<leader>qq", ":qa!<CR>", opts("Exit neovim"))
+keymap("n", "<leader>qw", ":wq!<CR>", opts("Write file and Exit"))
+keymap("n", "<leader>qq", ":q!<CR>", opts("Exit"))
+keymap("n", "<leader>qaw", ":wqa!<CR>", opts("Write file and Exit neovim"))
+keymap("n", "<leader>qaq", ":qa!<CR>", opts("Exit neovim"))
 
 -- Terminal Stuuf
 keymap({ "n", "t" }, "<leader>tr", ":ToggleTerm<CR>", opts("Toggle terminal"))

@@ -19,38 +19,18 @@ return {
 		}
 		-- Set menu
 		dashboard.section.buttons.val = {
-			dashboard.button("e", "  > New File", ":lua AskNewFileName()<CR>"),
-			dashboard.button("SPC ee", "  > Toggle file explorer", ":Oil --float<CR>"),
+			dashboard.button("e", "  > New File", ":AskNewFileName<CR>"),
+			dashboard.button("SPC ee", "  > File explorer", ":Oil --float<CR>"),
 			dashboard.button("SPC ff", "󰱼  > Find File", ":Telescope find_files<CR>"),
 			dashboard.button("SPC wr", "  > Restore Session", ":SessionRestore<CR>"),
 			dashboard.button("SPC wf", "  > Search Sessions", ":SessionSearch<CR>"),
-			dashboard.button("ce", "  > Config Nvim", ':lua OilDir(vim.fn.stdpath("config"))<CR>'),
-			dashboard.button(
-				"ct",
-				"  > Config WezTerm",
-				':lua EditFile(vim.loop.os_homedir() .. "/.config/wezterm/", "wezterm.lua")<CR>'
-			),
-			dashboard.button(
-				"cs",
-				"  > Config Powershell",
-				':lua OilDir(vim.loop.os_homedir() .. "/Documents/PowerShell")<CR>'
-			),
-			dashboard.button(
-				"cp",
-				"  > Config Starship",
-				':lua EditFile(vim.loop.os_homedir() .. "/.config/", "starship.toml")<CR>'
-			),
-			dashboard.button(
-				"cf",
-				"  > Config FastFetch",
-				':lua EditFile(vim.loop.os_homedir() .. "/.config/fastfetch/", "config.jsonc")<CR>'
-			),
-			dashboard.button(
-				"md",
-				"  > Opens My Markdown Folder",
-				':lua OilDir(vim.loop.os_homedir() .. "/Documents/Markdown")<CR>'
-			),
-			dashboard.button("q", "  > Quit Nvim", ":qa<CR>"),
+			dashboard.button("ce", "  > Config Nvim", ":OilDir $XDG_CONFIG_HOME/nvim<CR>"),
+			dashboard.button("ct", "  > Config WezTerm", ":EditFile $XDG_CONFIG_HOME/wezterm/ wezterm.lua<CR>"),
+			dashboard.button("cs", "  > Config Powershell", ":OilDir $HOME/Documents/PowerShell<CR>"),
+			dashboard.button("cp", "  > Config Starship", ":EditFile $XDG_CONFIG_HOME starship.toml<CR>"),
+			dashboard.button("cf", "  > Config FastFetch", ":EditFile $XDG_CONFIG_HOME/fastfetch/ config.jsonc<CR>"),
+			dashboard.button("md", "  > Opens My Markdown Folder", ":OilDir $HOME/Documents/Markdown<CR>"),
+			dashboard.button("q", "  > Quit Nvim", ":qa!<CR>"),
 		}
 
 		-- Send config to alpha
