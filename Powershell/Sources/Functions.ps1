@@ -1,21 +1,6 @@
 ### Linux Commands But As Functions
 
 # File Stuff
-function unzip ($file)
-{
-  Write-Output("Extracting", $file, "to", $pwd)
-  $fullFile = Get-ChildItem -Path $pwd -Filter $file | ForEach-Object { $_.FullName }
-  Expand-Archive -Path $fullFile -DestinationPath $pwd
-}
-function touch($file)
-{ "" | Out-File $file -Encoding ASCII 
-}
-function ff($name)
-{
-  Get-ChildItem -recurse -filter "*${name}*" -ErrorAction SilentlyContinue | ForEach-Object {
-    Write-Output "$($_.FullName)"
-  }
-}
 function nf
 { param($name) New-Item -ItemType "file" -Path . -Name $name 
 }

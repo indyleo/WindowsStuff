@@ -25,3 +25,37 @@ function AskNewFileName()
 		end
 	end)
 end
+
+-- Ask what file to open then opens it in a horizontal split
+function NewHSplit()
+	local current_dir = vim.fn.getcwd()
+	vim.ui.input({ prompt = "Enter file path: " }, function(filename)
+		if filename ~= nil and filename ~= "" then
+			local filepath = current_dir .. "\\" .. filename
+			if vim.fn.filereadable(filepath) == 1 then
+				vim.cmd("split " .. filename)
+			else
+				vim.notify("File does not exist in cwd", vim.log.levels.ERROR)
+			end
+		else
+			vim.notify("No file created", vim.log.levels.WARN)
+		end
+	end)
+end
+
+-- Ask what file to open then opens it in a vertical split
+function NewVSplit()
+	local current_dir = vim.fn.getcwd()
+	vim.ui.input({ prompt = "Enter file path: " }, function(filename)
+		if filename ~= nil and filename ~= "" then
+			local filepath = current_dir .. "\\" .. filename
+			if vim.fn.filereadable(filepath) == 1 then
+				vim.cmd("vsplit " .. filename)
+			else
+				vim.notify("File does not exist in cwd", vim.log.levels.ERROR)
+			end
+		else
+			vim.notify("No file created", vim.log.levels.WARN)
+		end
+	end)
+end
