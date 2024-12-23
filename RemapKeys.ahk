@@ -2,7 +2,7 @@
 #SingleInstance Force
 
 ;;; Variables
-USER := "Ur-User-Here"
+USER := "Indy"
 
 ;;; Media/Audio Keys
 
@@ -61,16 +61,16 @@ USER := "Ur-User-Here"
 
 ;;; Debug
 
-; Display Active Window Title
-F1::MsgBox("Window Title: " . WinGetTitle("A"))
-
-; Display Active Window Class
-F2::MsgBox("Window Class: " . WinGetClass("A"))
-
-; Display Active Window Class and Title
-F3::
-{
-    Title := WinGetTitle("A")
-    Class := WinGetClass("A")
-    MsgBox("Active Window Title: " . Title . "`nActive Window Class: " . Class)
-}
+;; Display Active Window Title
+;F1::MsgBox("Window Title: " . WinGetTitle("A"))
+;
+;; Display Active Window Class
+;F2::MsgBox("Window Class: " . WinGetClass("A"))
+;
+;; Display Active Window Class and Title
+;F3::
+;{
+;    Title := WinGetTitle("A")
+;    Class := WinGetClass("A")
+;    MsgBox("Active Window Title: " . Title . "`nActive Window Class: " . Class)
+;}
