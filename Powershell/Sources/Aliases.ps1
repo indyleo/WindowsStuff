@@ -169,4 +169,9 @@ Set-Alias -Name lg -Value lazygit
 function sysinfo
 { Get-ComputerInfo 
 }
+function flushdns
+{
+  Clear-DnsClientCache
+  Write-Host "DNS cache flushed"
+}
 Set-Alias -Name neofetch -Value fastfetch
