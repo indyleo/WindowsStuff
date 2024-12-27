@@ -34,8 +34,8 @@ USER := "Indy"
 ; Hotkey to open Vesktop (Discord)
 !d::Run("C:\Users\" . USER . "\AppData\Local\vesktop\Vesktop.exe")
 
-; Hotkey to open foobar2000
-!m::Run("C:\Program Files\foobar2000\foobar2000.exe")
+; Hotkey to open Feishin 
+!m::Run("C:\Users\" . USER . "\AppData\Local\Programs\feishin\Feishin.exe")
 
 ; Hotkey to open Terminal
 !Enter::Run("C:\Program Files\WezTerm\wezterm-gui.exe")
