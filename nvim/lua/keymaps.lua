@@ -48,24 +48,6 @@ vim.api.nvim_create_autocmd("BufEnter", {
 	end,
 })
 
-vim.api.nvim_create_autocmd("BufEnter", {
-	group = vim.api.nvim_create_augroup("HtmlMaps", { clear = true }),
-	pattern = "*.html",
-	callback = function(args)
-		local bufnr = args.buf
-		local langopts = function(desc)
-			return { desc = desc, buffer = bufnr, noremap = true, silent = true }
-		end
-		-- Http Server
-		keymap("n", "<leader>hn", function()
-			HttpServer(Start)
-		end, langopts("Start http server"))
-		keymap("n", "<leader>hf", function()
-			HttpServer(Stop)
-		end, langopts("Stop http server"))
-	end,
-})
-
 -- Normal --
 
 -- Better window managment
