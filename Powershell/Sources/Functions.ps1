@@ -290,3 +290,87 @@ function Get-SpotifyContent
     Write-Output "An error occurred while downloading: $_"
   }
 }
+
+### Wsl function
+function Enter-Wsl
+{
+  param (
+    [Parameter(Mandatory = $true)]
+    [string]$DistributionName
+  )
+
+  try
+  {
+    # Check if the specified distribution exists
+    $existingDistributions = wsl --list --quiet
+    if ($DistributionName -notin $existingDistributions)
+    {
+      Write-Error "The specified WSL distribution '$DistributionName' does not exist."
+      return
+    }
+
+    # Start an interactive shell session
+    wsl -d $DistributionName
+  } catch
+  {
+    Write-Error "An error occurred: $_"
+  }
+}
+
+function Terminate-Wsl
+{
+  param (
+    [Parameter(Mandatory = $true)]
+    [string]$DistributionName
+  )
+
+  try
+  {
+    # Check if the specified distribution exists
+    $existingDistributions = wsl --list --quiet
+    if ($DistributionName -notin $existingDistributions)
+    {
+      Write-Error "The specified WSL distribution '$DistributionName' does not exist."
+      return
+    }
+
+    # Terminate the specified WSL distribution
+    wsl --terminate $DistributionName
+    Write-Output "WSL distribution '$DistributionName' has been terminated."
+  } catch
+  {
+    Write-Error "An error occurred: $_"
+  }
+}
+
+function Export-Wsl
+{
+  param (
+    [Parameter(Mandatory = $true)]
+    [string]$DistributionName,
+
+    [Parameter(Mandatory = $true)]
+    [string]$Version
+  )
+
+  try
+  {
+    # Check if the specified distribution exists
+    $existingDistributions = wsl --list --quiet
+    if ($DistributionName -notin $existingDistributions)
+    {
+      Write-Error "The specified WSL distribution '$DistributionName' does not exist."
+      return
+    }
+
+    # Define the export file name
+    $ExportPath = "$DistributionName-$Version.tar"
+
+    # Export the specified WSL distribution to a tar file
+    wsl --export $DistributionName $ExportPath
+    Write-Output "WSL distribution '$DistributionName' has been exported to '$ExportPath'."
+  } catch
+  {
+    Write-Error "An error occurred: $_"
+  }
+}
