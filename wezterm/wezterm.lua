@@ -65,13 +65,13 @@ config.keys = {
 	},
 	-- Panes
 	{ -- Making Panes
-		key = "o",
-		mods = "LEADER|SHIFT",
+		key = "\\",
+		mods = "LEADER",
 		action = action({ SplitHorizontal = { domain = "CurrentPaneDomain" } }),
 	},
 	{
-		key = "i",
-		mods = "LEADER|SHIFT",
+		key = "-",
+		mods = "LEADER",
 		action = action({ SplitVertical = { domain = "CurrentPaneDomain" } }),
 	},
 	{ -- Navagating Panes
