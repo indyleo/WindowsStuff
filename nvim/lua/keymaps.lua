@@ -80,12 +80,6 @@ keymap("n", "<leader>hl", ":nohlsearch<CR>", opts("Clear highlights"))
 keymap("n", "a", "<C-a>", opt)
 keymap("n", "q", "<C-x>", opt)
 
--- Exit neovim
-keymap("n", "<leader>qw", ":wq!<CR>", opts("Write file and Exit"))
-keymap("n", "<leader>qq", ":q!<CR>", opts("Exit"))
-keymap("n", "<leader>qaw", ":wqa!<CR>", opts("Write file and Exit neovim"))
-keymap("n", "<leader>qaq", ":qa!<CR>", opts("Exit neovim"))
-
 -- Terminal Stuuf
 keymap({ "n", "t" }, "<leader>tr", ":ToggleTerm<CR>", opts("Toggle terminal"))
 keymap({ "n", "t" }, "<leader>tg", ":ToggleLazygit<CR>", opts("Toggle lazygit"))
