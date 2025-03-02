@@ -2,7 +2,7 @@
 #SingleInstance Force
 
 ;;; Variables
-USER := "Indy"
+USER := ""
 
 ;;; Media/Audio Keys
 
@@ -38,12 +38,12 @@ USER := "Indy"
 !m::Run("C:\Users\" . USER . "\AppData\Local\Programs\feishin\Feishin.exe")
 
 ; Hotkey to open Terminal
-!Enter::Run("C:\Program Files\WezTerm\wezterm-gui.exe")
+!Enter::Run("C:\Program Files\Alacritty\alacritty.exe")
 
 ; Hotkey to open Terminal as Admin
 ^!Enter::
 {
-    Run("*RunAs C:\Program Files\WezTerm\wezterm-gui.exe")
+    Run("*RunAs C:\Program Files\Alacritty\alacritty.exe")
 }
 
 ; Hotkey to open File Explorer
@@ -52,7 +52,7 @@ USER := "Indy"
 ;;; A Key to Different Key
 
 ; Caps -> Esc & Esc -> Ctrl + V (only if Wezterm is focused)
-#HotIf WinActive("ahk_class org.wezfurlong.wezterm") && WinExist("ahk_class org.wezfurlong.wezterm") && InStr(WinGetTitle("A"), "neovim")
+#HotIf WinActive("ahk_class Alacritty") && WinExist("ahk_class Alacritty") && InStr(WinGetTitle("A"), "neovim")
 {
     Capslock::Send("{Esc}")
     Esc::Send("^v")

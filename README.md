@@ -20,7 +20,6 @@ Unblock-File $FUNCTION
 Unblock-File $COMP[0]
 Unblock-File $COMP[1]
 Unblock-File $COMP[2]
-Unblock-File $COMP[3]
 ```
 
 ## Nice Stuff For The Powershell config
@@ -46,9 +45,15 @@ gsudo config CacheMode Auto
 ## Proper locations for config file
 
 ```pwsh
-mv .\nvim .\wezterm .\fastfetch  .\starship.toml $XDG_CONFIG_HOME\.config\
+mv .\nvim .\fastfetch  .\starship.toml $XDG_CONFIG_HOME\.config\
 ```
 
 ```pwsh
 mv .\.gitconfig $HOME\
 ```
+
+```pwsh
+mv .\alacritty $APPDATA\
+```
+
+

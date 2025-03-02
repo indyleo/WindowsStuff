@@ -28,7 +28,7 @@ $EDITOR = if (Test-CommandExists nvim)
 }
 $AlIAS = "$HOME\Documents\Powershell\Sources\Aliases.ps1"
 $FUNCTION = "$HOME\Documents\Powershell\Sources\Functions.ps1"
-$COMP = @("$HOME\Documents\Powershell\Sources\Gh-Completion.ps1", "$HOME\Documents\Powershell\Sources\Starship-Completion.ps1", "$HOME\Documents\Powershell\Sources\Wezterm-Completion.ps1", "$HOME\Documents\Powershell\Sources\Winget-Completion.ps1")
+$COMP = @("$HOME\Documents\Powershell\Sources\Gh-Completion.ps1", "$HOME\Documents\Powershell\Sources\Starship-Completion.ps1", "$HOME\Documents\Powershell\Sources\Winget-Completion.ps1")
 
 # Imports
 Import-Module -Name gsudoModule
@@ -117,18 +117,6 @@ if (Test-Path $COMP[1] )
   Write-Host "Starship file does not exist."
 }
 
-if (Test-Path $COMP[2] )
-{
-  if ( Test-CommandExists wezterm )
-  { . $COMP[2] 
-  } else
-  { Write-Host "Wezterm not installed" 
-  }
-} else
-{
-  Write-Host "Wezterm file does not exist."
-}
-
 # Zoxide Check
 if (Test-CommandExists zoxide )
 {
@@ -157,3 +145,6 @@ function Invoke-Starship-TransientFunction
   Write-Host ""
 }
 Enable-TransientPrompt
+
+# Set-Location
+Set-Location -Path $env:USERPROFILE
