@@ -51,8 +51,8 @@ USER := ""
 
 ;;; A Key to Different Key
 
-; Caps -> Esc & Esc -> Ctrl + V (only if Wezterm is focused)
-#HotIf WinActive("ahk_class Alacritty") && WinExist("ahk_class Alacritty") && InStr(WinGetTitle("A"), "neovim")
+; Caps -> Esc & Esc -> Ctrl + V (only if Alacritty is focused)
+#HotIf WinActive("ahk_class Window Class") && WinExist("ahk_class Window Class") && InStr(WinGetTitle("A"), "Neovim")
 {
     Capslock::Send("{Esc}")
     Esc::Send("^v")
