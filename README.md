@@ -44,7 +44,7 @@ gsudo config CacheMode Auto
 ## Proper locations for config file
 
 ```pwsh
-mv .\nvim .\fastfetch  .\starship.toml $XDG_CONFIG_HOME\.config\
+mv .\nvim .\fastfetch .\ohmyposh $XDG_CONFIG_HOME\.config\
 ```
 
 ```pwsh
