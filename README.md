@@ -19,7 +19,6 @@ Unblock-File $AlIAS
 Unblock-File $FUNCTION
 Unblock-File $COMP[0]
 Unblock-File $COMP[1]
-Unblock-File $COMP[2]
 ```
 
 ## Nice Stuff For The Powershell config
@@ -55,5 +54,3 @@ mv .\.gitconfig $HOME\
 ```pwsh
 mv .\alacritty $APPDATA\
 ```
-
-

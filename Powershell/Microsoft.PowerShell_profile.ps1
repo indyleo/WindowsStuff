@@ -28,7 +28,7 @@ $EDITOR = if (Test-CommandExists nvim)
 }
 $AlIAS = "$HOME\Documents\Powershell\Sources\Aliases.ps1"
 $FUNCTION = "$HOME\Documents\Powershell\Sources\Functions.ps1"
-$COMP = @("$HOME\Documents\Powershell\Sources\Gh-Completion.ps1", "$HOME\Documents\Powershell\Sources\Starship-Completion.ps1", "$HOME\Documents\Powershell\Sources\Winget-Completion.ps1")
+$COMP = @("$HOME\Documents\Powershell\Sources\Gh-Completion.ps1", "$HOME\Documents\Powershell\Sources\Winget-Completion.ps1")
 
 # Imports
 Import-Module -Name gsudoModule
@@ -74,7 +74,7 @@ $scriptblock = {
 Register-ArgumentCompleter -Native -CommandName dotnet -ScriptBlock $scriptblock
 
 # Environment Setting
-$env:XDG_CONFIG_HOME = "$HOME\.config"
+$env:XDG_CONFIG_HOME = "$env:USERPROFILE\.config"
 
 # Sourcing Files
 if (Test-Path $AlIAS)
@@ -105,18 +105,6 @@ if (Test-Path $COMP[0] )
   Write-Host "Gh file does not exist."
 }
 
-if (Test-Path $COMP[1] )
-{
-  if ( Test-CommandExists starship )
-  { . $COMP[1] 
-  } else
-  { Write-Host "Starship not installed" 
-  }
-} else
-{
-  Write-Host "Starship file does not exist."
-}
-
 # Zoxide Check
 if (Test-CommandExists zoxide )
 {
@@ -126,25 +114,14 @@ if (Test-CommandExists zoxide )
   Write-Host "Zoxide is not installed."
 }
 
-### Starship Prompt Setup
-if ( Test-CommandExists starship )
+# Oh-My-Posh Prompt Setup
+if (Test-CommandExists oh-my-posh )
 {
-  function Invoke-Starship-PreCommand
-  {
-    if ($global:profile_initialized -ne $true)
-    {
-      $global:profile_initialized = $true
-      Initialize-Profile
-    }
-  }
-  Invoke-Expression (&starship init powershell)
-}
-function Invoke-Starship-TransientFunction
+  oh-my-posh init pwsh --config "$HOME\.config\ohmyposh\base.toml" | Invoke-Expression
+} else
 {
-  "$(&starship prompt --profile transient)"
-  Write-Host ""
+  Write-Host "Oh-My-Posh is not installed."
 }
-Enable-TransientPrompt
 
 # Set-Location
 Set-Location -Path $env:USERPROFILE
