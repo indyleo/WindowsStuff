@@ -64,6 +64,8 @@ return {
 				"black",
 				"pylint",
 				"selene",
+				"crlfmt",
+				"golangci-lint",
 			},
 		})
 	end,

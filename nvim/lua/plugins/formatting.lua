@@ -19,6 +19,7 @@ return {
 				-- Langs
 				lua = { "stylua" },
 				python = { "isort", "black" },
+				go = { "crlfmt" },
 			},
 			format_on_save = {
 				lsp_fallback = true,
