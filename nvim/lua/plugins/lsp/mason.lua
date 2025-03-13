@@ -40,6 +40,7 @@ return {
 				-- Langs
 				"pyright",
 				"lua_ls",
+				"gopls",
 				"powershell_es",
 			},
 		})
