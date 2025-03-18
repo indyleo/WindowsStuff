@@ -28,8 +28,8 @@ USER := ""
 
 ;;; App Opening Keys
 
-; Hotkey to open Floorp
-!b::Run("C:\Program Files\Ablaze Floorp\floorp.exe")
+; Hotkey to open Brave
+!b::Run("C:\Users\" . USER . "\AppData\Local\BraveSoftware\Brave-Browser\Application\brave.exe")
 
 ; Hotkey to open Vesktop (Discord)
 !d::Run("C:\Users\" . USER . "\AppData\Local\vesktop\Vesktop.exe")
